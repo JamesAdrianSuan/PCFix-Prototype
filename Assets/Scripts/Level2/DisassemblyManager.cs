@@ -15,6 +15,9 @@ public class DisassemblyManager : MonoBehaviour
     public TMP_Text instructionText;
     public TMP_Text progressText;
 
+    [Header("Inventory")]
+    public DisassemblyInventory inventory;
+
     [Header("Disassembly Components")]
     public ComponentGroup[] components;
 
@@ -139,12 +142,15 @@ public class DisassemblyManager : MonoBehaviour
         {
             EnablePSUCables();
 
+            int totalPSUCables =
+                psuCables != null ? psuCables.Length : 0;
+
             UpdateInstruction(
                 "STEP 1\n\nDisconnect PSU cables\n" +
                 "(" +
                 disconnectedCables.Count +
                 " / " +
-                psuCables.Length +
+                totalPSUCables +
                 ")"
             );
 
@@ -307,14 +313,17 @@ public class DisassemblyManager : MonoBehaviour
                 cable.gameObject.name
             );
 
+            int totalPSUCables =
+                psuCables != null ? psuCables.Length : 0;
+
             Debug.Log(
                 "PSU CABLE PROGRESS: " +
                 disconnectedCables.Count +
                 " / " +
-                psuCables.Length
+                totalPSUCables
             );
 
-            if (disconnectedCables.Count >= psuCables.Length)
+            if (disconnectedCables.Count >= totalPSUCables)
             {
                 psuCablesComplete = true;
 
@@ -335,7 +344,7 @@ public class DisassemblyManager : MonoBehaviour
                     "(" +
                     disconnectedCables.Count +
                     " / " +
-                    psuCables.Length +
+                    totalPSUCables +
                     ")"
                 );
             }
@@ -428,7 +437,8 @@ public class DisassemblyManager : MonoBehaviour
         if (component == null)
             return;
 
-        if (currentStep >= components.Length)
+        if (components == null ||
+            currentStep >= components.Length)
             return;
 
         ComponentGroup currentGroup =
@@ -470,6 +480,10 @@ public class DisassemblyManager : MonoBehaviour
 
     private void CompleteCurrentStep()
     {
+        if (components == null ||
+            currentStep >= components.Length)
+            return;
+
         ComponentGroup completedGroup =
             components[currentStep];
 
@@ -480,6 +494,10 @@ public class DisassemblyManager : MonoBehaviour
             completedGroup.componentName
         );
 
+        // -----------------------------------------------------
+        // REMOVE COMPONENT
+        // -----------------------------------------------------
+
         foreach (DisassemblyComponent part
             in completedGroup.parts)
         {
@@ -489,6 +507,22 @@ public class DisassemblyManager : MonoBehaviour
                 part.RemoveComponent();
             }
         }
+
+        // -----------------------------------------------------
+        // UPDATE INVENTORY
+        // Only after the actual component is removed.
+        // -----------------------------------------------------
+
+        if (inventory != null)
+        {
+            inventory.MarkRemoved(
+                completedGroup.componentName
+            );
+        }
+
+        // -----------------------------------------------------
+        // NEXT STEP
+        // -----------------------------------------------------
 
         currentStep++;
 
