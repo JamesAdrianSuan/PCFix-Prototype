@@ -424,6 +424,8 @@ MonoBehaviour:
   distance: 2
   minDistance: 2
   maxDistance: 15
+  zoomSpeed: 0.15
+  zoomSmoothness: 12
   rotationSpeed: 0.15
   targetHeight: 1
 --- !u!1 &37620182
@@ -2615,7 +2617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1029736253
 RectTransform:
   m_ObjectHideFlags: 0
