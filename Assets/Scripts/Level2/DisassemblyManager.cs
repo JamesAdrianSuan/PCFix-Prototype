@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DisassemblyManager : MonoBehaviour
 {
@@ -14,6 +16,23 @@ public class DisassemblyManager : MonoBehaviour
     [Header("UI")]
     public TMP_Text instructionText;
     public TMP_Text progressText;
+
+    [Header("Wrong Click Feedback")]
+    public GameObject wrongClickFeedback;
+    public TMP_Text wrongClickFeedbackText;
+    public float feedbackDuration = 2f;
+
+    [Header("Results Panel")]
+    public GameObject resultsPanel;
+    public TMP_Text resultsTitle;
+    public TMP_Text starText;
+    public TMP_Text performanceText;
+    public TMP_Text finalScoreText;
+    public TMP_Text finalXPText;
+    public TMP_Text finalCorrectText;
+    public TMP_Text finalMistakesText;
+    public TMP_Text finalAccuracyText;
+    public Button retryButton;
 
     [Header("Inventory")]
     public DisassemblyInventory inventory;
@@ -31,322 +50,466 @@ public class DisassemblyManager : MonoBehaviour
     public DisassemblyCable ssd2Cable;
 
     private int currentStep = 0;
+    private int correctClicks = 0;
+    private int mistakeClicks = 0;
 
-    private HashSet<DisassemblyCable> disconnectedCables =
-        new HashSet<DisassemblyCable>();
+    private bool disassemblyComplete = false;
 
     private bool psuCablesComplete = false;
     private bool ssd1CableComplete = false;
     private bool ssd2CableComplete = false;
 
+    private HashSet<DisassemblyCable> disconnectedCables =
+        new HashSet<DisassemblyCable>();
+
+    private Coroutine feedbackCoroutine;
+
+    // =========================================================
+    // START
+    // =========================================================
+
     private void Start()
     {
-        Debug.Log("=== DISASSEMBLY MANAGER STARTED ===");
+        if (resultsPanel != null)
+            resultsPanel.SetActive(false);
 
-        DisableAllComponents();
+        HideWrongFeedback();
+
         DisableAllCables();
+
+        SetupCableManagers();
 
         SetupCurrentStep();
     }
 
     // =========================================================
-    // DISABLE EVERYTHING
+    // SETUP CABLE MANAGERS
     // =========================================================
 
-    private void DisableAllComponents()
-    {
-        if (components == null)
-        {
-            Debug.LogError("Components array is NULL!");
-            return;
-        }
-
-        foreach (ComponentGroup group in components)
-        {
-            if (group == null || group.parts == null)
-                continue;
-
-            foreach (DisassemblyComponent part in group.parts)
-            {
-                if (part != null)
-                {
-                    part.Setup(this);
-                    part.SetInteractable(false);
-                }
-            }
-        }
-    }
-
-    private void DisableAllCables()
+    private void SetupCableManagers()
     {
         if (psuCables != null)
         {
             foreach (DisassemblyCable cable in psuCables)
             {
                 if (cable != null)
-                {
                     cable.Setup(this);
-                    cable.SetInteractable(false);
-                }
             }
         }
 
         if (ssd1Cable != null)
-        {
             ssd1Cable.Setup(this);
-            ssd1Cable.SetInteractable(false);
-        }
 
         if (ssd2Cable != null)
-        {
             ssd2Cable.Setup(this);
-            ssd2Cable.SetInteractable(false);
-        }
     }
 
     // =========================================================
-    // CURRENT STEP
+    // SETUP CURRENT STEP
     // =========================================================
 
     private void SetupCurrentStep()
     {
-        if (components == null || components.Length == 0)
-        {
-            Debug.LogError("No disassembly components assigned!");
+        if (disassemblyComplete)
             return;
-        }
 
-        if (currentStep >= components.Length)
-        {
-            CompleteDisassembly();
-            return;
-        }
+        HideWrongFeedback();
 
-        ComponentGroup currentGroup =
-            components[currentStep];
+        DisableAllCables();
 
-        Debug.Log(
-            "CURRENT STEP: " +
-            (currentStep + 1) +
-            " / " +
-            components.Length +
-            " | TARGET: " +
-            currentGroup.componentName
-        );
-
-        // -----------------------------------------------------
+        // =====================================================
         // STEP 1 - PSU CABLES
-        // -----------------------------------------------------
+        // =====================================================
 
         if (currentStep == 0 && !psuCablesComplete)
         {
             EnablePSUCables();
 
-            int totalPSUCables =
-                psuCables != null ? psuCables.Length : 0;
-
-            UpdateInstruction(
-                "STEP 1\n\nDisconnect PSU cables\n" +
-                "(" +
-                disconnectedCables.Count +
-                " / " +
-                totalPSUCables +
-                ")"
+            SetInstruction(
+                "STEP 1\n\nDisconnect PSU cables"
             );
 
-            Debug.Log("PSU CABLE STAGE ACTIVE.");
+            UpdateProgress();
 
             return;
         }
 
-        // -----------------------------------------------------
-        // STEP 7 - SSD 1 CABLE
-        // currentStep 6 = SSD 1
-        // -----------------------------------------------------
+        // =====================================================
+        // STEP 2 - PSU
+        // =====================================================
+
+        if (currentStep == 0 && psuCablesComplete)
+        {
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 2\n\nRemove Power Supply"
+            );
+
+            UpdateProgress();
+
+            return;
+        }
+
+        // =====================================================
+        // SSD 1 CABLE
+        // =====================================================
 
         if (currentStep == 6 && !ssd1CableComplete)
         {
-            DisableAllComponents();
+            DisableAllCables();
 
             if (ssd1Cable != null)
-            {
-                ssd1Cable.Setup(this);
                 ssd1Cable.SetInteractable(true);
-            }
 
-            UpdateInstruction(
-                "STEP 7\n\nDisconnect SSD 1 cable"
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 8\n\nDisconnect SSD 1 cable"
             );
 
-            Debug.Log("SSD 1 CABLE STAGE ACTIVE.");
+            UpdateProgress();
 
             return;
         }
 
-        // -----------------------------------------------------
-        // STEP 8 - SSD 2 CABLE
-        // currentStep 7 = SSD 2
-        // -----------------------------------------------------
+        // =====================================================
+        // SSD 1
+        // =====================================================
+
+        if (currentStep == 6 && ssd1CableComplete)
+        {
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 9\n\nRemove SSD 1"
+            );
+
+            UpdateProgress();
+
+            return;
+        }
+
+        // =====================================================
+        // SSD 2 CABLE
+        // =====================================================
 
         if (currentStep == 7 && !ssd2CableComplete)
         {
-            DisableAllComponents();
+            DisableAllCables();
 
             if (ssd2Cable != null)
-            {
-                ssd2Cable.Setup(this);
                 ssd2Cable.SetInteractable(true);
-            }
 
-            UpdateInstruction(
-                "STEP 8\n\nDisconnect SSD 2 cable"
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 10\n\nDisconnect SSD 2 cable"
             );
 
-            Debug.Log("SSD 2 CABLE STAGE ACTIVE.");
+            UpdateProgress();
 
             return;
         }
 
-        // -----------------------------------------------------
-        // NORMAL COMPONENT STEP
-        // -----------------------------------------------------
+        // =====================================================
+        // SSD 2
+        // =====================================================
 
-        EnableCurrentComponent();
+        if (currentStep == 7 && ssd2CableComplete)
+        {
+            EnableActiveComponents();
 
-        UpdateInstruction(
-            "STEP " +
-            (currentStep + 2) +
-            "\n\nRemove the " +
-            currentGroup.componentName
-        );
+            SetInstruction(
+                "STEP 11\n\nRemove SSD 2"
+            );
+
+            UpdateProgress();
+
+            return;
+        }
+
+        // =====================================================
+        // NORMAL COMPONENT STEPS
+        // =====================================================
+
+        EnableActiveComponents();
+
+        if (currentStep < components.Length)
+        {
+            SetInstruction(
+                "STEP " +
+                GetDisplayStepNumber() +
+                "\n\nRemove " +
+                components[currentStep].componentName
+            );
+        }
+
+        UpdateProgress();
     }
 
     // =========================================================
-    // ENABLE PSU CABLES
+    // ACTIVE COMPONENTS
     // =========================================================
 
-    private void EnablePSUCables()
+    private void EnableActiveComponents()
     {
-        if (psuCables == null)
+        if (components == null)
             return;
 
-        foreach (DisassemblyCable cable in psuCables)
+        for (int i = 0; i < components.Length; i++)
         {
-            if (cable != null &&
-                !disconnectedCables.Contains(cable))
+            ComponentGroup group = components[i];
+
+            if (group == null || group.parts == null)
+                continue;
+
+            foreach (DisassemblyComponent part in group.parts)
             {
-                cable.Setup(this);
-                cable.SetInteractable(true);
+                if (part == null)
+                    continue;
+
+                bool active = IsComponentStillActive(part);
+
+                part.SetInteractable(active);
             }
         }
     }
 
+    private bool IsComponentStillActive(
+        DisassemblyComponent component)
+    {
+        if (component == null)
+            return false;
+
+        if (!component.IsVisibleForInteraction())
+            return false;
+
+        if (components == null)
+            return false;
+
+        for (int i = 0; i < components.Length; i++)
+        {
+            ComponentGroup group = components[i];
+
+            if (group == null || group.parts == null)
+                continue;
+
+            foreach (DisassemblyComponent part in group.parts)
+            {
+                if (part == component)
+                {
+                    // Any group at or after the current group
+                    // is still active.
+                    return i >= currentStep;
+                }
+            }
+        }
+
+        return false;
+    }
+
     // =========================================================
-    // ENABLE CURRENT COMPONENT
+    // COMPONENT CLICK
     // =========================================================
 
-    private void EnableCurrentComponent()
+    public void ComponentClicked(
+        DisassemblyComponent component)
     {
+        if (disassemblyComplete)
+            return;
+
+        if (component == null)
+            return;
+
+        // Already removed / inactive = do nothing.
+        if (!IsComponentStillActive(component))
+            return;
+
+        // =====================================================
+        // PSU CABLE STAGE
+        // =====================================================
+
+        if (currentStep == 0 && !psuCablesComplete)
+        {
+            RegisterMistake(
+                "❌ Incorrect!\n\n" +
+                "💡 Hint: Please disconnect the PSU cables first."
+            );
+
+            return;
+        }
+
+        // =====================================================
+        // SSD 1 CABLE STAGE
+        // =====================================================
+
+        if (currentStep == 6 && !ssd1CableComplete)
+        {
+            RegisterMistake(
+                "❌ Incorrect!\n\n" +
+                "💡 Hint: Please disconnect the SSD 1 cable first."
+            );
+
+            return;
+        }
+
+        // =====================================================
+        // SSD 2 CABLE STAGE
+        // =====================================================
+
+        if (currentStep == 7 && !ssd2CableComplete)
+        {
+            RegisterMistake(
+                "❌ Incorrect!\n\n" +
+                "💡 Hint: Please disconnect the SSD 2 cable first."
+            );
+
+            return;
+        }
+
+        // =====================================================
+        // NORMAL COMPONENT STEP
+        // =====================================================
+
         if (currentStep >= components.Length)
             return;
 
         ComponentGroup currentGroup =
             components[currentStep];
 
-        foreach (DisassemblyComponent part in currentGroup.parts)
+        if (currentGroup == null)
+            return;
+
+        bool correctComponent = false;
+
+        if (currentGroup.parts != null)
         {
-            if (part != null)
+            foreach (DisassemblyComponent part
+                     in currentGroup.parts)
             {
-                part.Setup(this);
-                part.SetInteractable(true);
+                if (part == component)
+                {
+                    correctComponent = true;
+                    break;
+                }
             }
         }
 
-        Debug.Log(
-            "CURRENT COMPONENT IS NOW CLICKABLE: " +
-            currentGroup.componentName
-        );
+        // =====================================================
+        // CORRECT
+        // =====================================================
+
+        if (correctComponent)
+        {
+            correctClicks++;
+
+            HideWrongFeedback();
+
+            CompleteCurrentStep();
+        }
+        else
+        {
+            // =================================================
+            // WRONG ACTIVE COMPONENT
+            // =================================================
+
+            RegisterMistake(
+                "❌ Incorrect!\n\n" +
+                "💡 Hint: Please remove " +
+                currentGroup.componentName +
+                " first."
+            );
+        }
     }
 
     // =========================================================
-    // CABLE CLICKED
+    // CABLE CLICK
     // =========================================================
 
-    public void CableClicked(DisassemblyCable cable)
+    public void CableClicked(
+        DisassemblyCable cable)
     {
+        if (disassemblyComplete)
+            return;
+
         if (cable == null)
             return;
 
-        Debug.Log(
-            "CABLE CLICKED: " +
-            cable.gameObject.name +
-            " | Group: " +
-            cable.cableGroup
-        );
+        // Already disconnected = do nothing.
+        if (disconnectedCables.Contains(cable))
+            return;
 
         // =====================================================
-        // PSU CABLES
+        // PSU CABLE STAGE
         // =====================================================
 
-        if (currentStep == 0)
+        if (currentStep == 0 && !psuCablesComplete)
         {
-            if (cable.cableGroup != "PSU")
+            bool correctCable = false;
+
+            if (psuCables != null)
             {
-                Debug.Log(
-                    "This cable is not a PSU cable."
+                foreach (DisassemblyCable psuCable
+                         in psuCables)
+                {
+                    if (psuCable == cable)
+                    {
+                        correctCable = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!correctCable)
+            {
+                RegisterMistake(
+                    "❌ Incorrect!\n\n" +
+                    "💡 Hint: Please disconnect the PSU cables first."
                 );
 
                 return;
             }
 
-            if (disconnectedCables.Contains(cable))
-                return;
+            // -------------------------------------------------
+            // CORRECT PSU CABLE
+            // -------------------------------------------------
+
+            correctClicks++;
+
+            HideWrongFeedback();
 
             disconnectedCables.Add(cable);
 
             cable.SetInteractable(false);
 
+            // IMPORTANT:
+            // Your DisassemblyCable.cs uses Detach().
             cable.Detach();
 
-            Debug.Log(
-                "PSU CABLE DISCONNECTED: " +
-                cable.gameObject.name
-            );
-
-            int totalPSUCables =
-                psuCables != null ? psuCables.Length : 0;
-
-            Debug.Log(
-                "PSU CABLE PROGRESS: " +
-                disconnectedCables.Count +
-                " / " +
-                totalPSUCables
-            );
-
-            if (disconnectedCables.Count >= totalPSUCables)
+            if (AreAllPSUCablesDisconnected())
             {
                 psuCablesComplete = true;
 
-                Debug.Log(
-                    "=== ALL PSU CABLES DISCONNECTED ==="
+                EnableActiveComponents();
+
+                SetInstruction(
+                    "STEP 2\n\nRemove Power Supply"
                 );
 
-                UpdateInstruction(
-                    "STEP 1\n\nRemove the Power Supply"
-                );
-
-                EnableCurrentComponent();
+                UpdateProgress();
             }
             else
             {
-                UpdateInstruction(
-                    "STEP 1\n\nDisconnect PSU cables\n" +
-                    "(" +
+                SetInstruction(
+                    "STEP 1\n\nDisconnect PSU cables (" +
                     disconnectedCables.Count +
-                    " / " +
-                    totalPSUCables +
+                    "/" +
+                    psuCables.Length +
                     ")"
                 );
+
+                UpdateProgress();
             }
 
             return;
@@ -356,35 +519,38 @@ public class DisassemblyManager : MonoBehaviour
         // SSD 1 CABLE
         // =====================================================
 
-        if (currentStep == 6)
+        if (currentStep == 6 && !ssd1CableComplete)
         {
             if (cable != ssd1Cable)
             {
-                Debug.Log(
-                    "This is not the SSD 1 cable."
+                RegisterMistake(
+                    "❌ Incorrect!\n\n" +
+                    "💡 Hint: Please disconnect the SSD 1 cable first."
                 );
 
                 return;
             }
 
-            if (ssd1CableComplete)
-                return;
+            correctClicks++;
+
+            HideWrongFeedback();
 
             ssd1CableComplete = true;
 
+            disconnectedCables.Add(cable);
+
             cable.SetInteractable(false);
 
+            // Your actual cable method.
             cable.Detach();
 
-            Debug.Log(
-                "=== SSD 1 CABLE DISCONNECTED ==="
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 9\n\nRemove SSD 1"
             );
 
-            EnableCurrentComponent();
-
-            UpdateInstruction(
-                "STEP 7\n\nRemove SSD 1"
-            );
+            UpdateProgress();
 
             return;
         }
@@ -393,136 +559,79 @@ public class DisassemblyManager : MonoBehaviour
         // SSD 2 CABLE
         // =====================================================
 
-        if (currentStep == 7)
+        if (currentStep == 7 && !ssd2CableComplete)
         {
             if (cable != ssd2Cable)
             {
-                Debug.Log(
-                    "This is not the SSD 2 cable."
+                RegisterMistake(
+                    "❌ Incorrect!\n\n" +
+                    "💡 Hint: Please disconnect the SSD 2 cable first."
                 );
 
                 return;
             }
 
-            if (ssd2CableComplete)
-                return;
+            correctClicks++;
+
+            HideWrongFeedback();
 
             ssd2CableComplete = true;
 
+            disconnectedCables.Add(cable);
+
             cable.SetInteractable(false);
 
+            // Your actual cable method.
             cable.Detach();
 
-            Debug.Log(
-                "=== SSD 2 CABLE DISCONNECTED ==="
+            EnableActiveComponents();
+
+            SetInstruction(
+                "STEP 11\n\nRemove SSD 2"
             );
 
-            EnableCurrentComponent();
-
-            UpdateInstruction(
-                "STEP 8\n\nRemove SSD 2"
-            );
+            UpdateProgress();
 
             return;
         }
     }
 
     // =========================================================
-    // COMPONENT CLICKED
-    // =========================================================
-
-    public void ComponentClicked(
-        DisassemblyComponent component)
-    {
-        if (component == null)
-            return;
-
-        if (components == null ||
-            currentStep >= components.Length)
-            return;
-
-        ComponentGroup currentGroup =
-            components[currentStep];
-
-        Debug.Log(
-            "CHECKING COMPONENT | " +
-            "Clicked: [" +
-            component.componentName +
-            "] | Expected: [" +
-            currentGroup.componentName +
-            "]"
-        );
-
-        if (string.Equals(
-            component.componentName.Trim(),
-            currentGroup.componentName.Trim(),
-            System.StringComparison.OrdinalIgnoreCase))
-        {
-            Debug.Log(
-                "CORRECT COMPONENT: " +
-                currentGroup.componentName
-            );
-
-            CompleteCurrentStep();
-        }
-        else
-        {
-            Debug.Log(
-                "WRONG COMPONENT! Expected: " +
-                currentGroup.componentName
-            );
-        }
-    }
-
-    // =========================================================
-    // COMPLETE COMPONENT STEP
+    // COMPLETE CURRENT COMPONENT
     // =========================================================
 
     private void CompleteCurrentStep()
     {
-        if (components == null ||
-            currentStep >= components.Length)
+        if (currentStep >= components.Length)
+        {
+            CompleteDisassembly();
             return;
+        }
 
-        ComponentGroup completedGroup =
+        ComponentGroup group =
             components[currentStep];
 
-        Debug.Log(
-            "STEP " +
-            (currentStep + 1) +
-            " COMPLETE: " +
-            completedGroup.componentName
-        );
+        if (group == null)
+            return;
 
-        // -----------------------------------------------------
-        // REMOVE COMPONENT
-        // -----------------------------------------------------
-
-        foreach (DisassemblyComponent part
-            in completedGroup.parts)
+        if (group.parts != null)
         {
-            if (part != null)
+            foreach (DisassemblyComponent part
+                     in group.parts)
             {
-                part.SetInteractable(false);
+                if (part == null)
+                    continue;
+
                 part.RemoveComponent();
+
+                if (inventory != null)
+                {
+                    inventory.MarkRemoved(
+                        group.componentName
+                    );
+                }
             }
         }
-
-        // -----------------------------------------------------
-        // UPDATE INVENTORY
-        // Only after the actual component is removed.
-        // -----------------------------------------------------
-
-        if (inventory != null)
-        {
-            inventory.MarkRemoved(
-                completedGroup.componentName
-            );
-        }
-
-        // -----------------------------------------------------
-        // NEXT STEP
-        // -----------------------------------------------------
 
         currentStep++;
 
@@ -536,46 +645,316 @@ public class DisassemblyManager : MonoBehaviour
     }
 
     // =========================================================
-    // UPDATE UI
+    // PSU CABLES
     // =========================================================
 
-    private void UpdateInstruction(string message)
+    private void EnablePSUCables()
     {
-        if (instructionText != null)
-        {
-            instructionText.text = message;
-        }
+        DisableAllCables();
 
-        if (progressText != null)
+        if (psuCables == null)
+            return;
+
+        foreach (DisassemblyCable cable in psuCables)
         {
-            progressText.text =
-                "Step " +
-                (currentStep + 1) +
-                " / " +
-                components.Length;
+            if (cable == null)
+                continue;
+
+            if (!disconnectedCables.Contains(cable))
+            {
+                cable.SetInteractable(true);
+            }
         }
     }
 
+    private void DisableAllCables()
+    {
+        if (psuCables != null)
+        {
+            foreach (DisassemblyCable cable
+                     in psuCables)
+            {
+                if (cable != null)
+                    cable.SetInteractable(false);
+            }
+        }
+
+        if (ssd1Cable != null)
+            ssd1Cable.SetInteractable(false);
+
+        if (ssd2Cable != null)
+            ssd2Cable.SetInteractable(false);
+    }
+
+    private bool AreAllPSUCablesDisconnected()
+    {
+        if (psuCables == null ||
+            psuCables.Length == 0)
+        {
+            return true;
+        }
+
+        foreach (DisassemblyCable cable
+                 in psuCables)
+        {
+            if (cable == null)
+                continue;
+
+            if (!disconnectedCables.Contains(cable))
+                return false;
+        }
+
+        return true;
+    }
+
     // =========================================================
-    // COMPLETE
+    // WRONG CLICK FEEDBACK
+    // =========================================================
+
+    private void RegisterMistake(
+        string message)
+    {
+        mistakeClicks++;
+
+        ShowWrongFeedback(message);
+    }
+
+    private void ShowWrongFeedback(
+        string message)
+    {
+        if (wrongClickFeedbackText != null)
+            wrongClickFeedbackText.text = message;
+
+        if (wrongClickFeedback != null)
+            wrongClickFeedback.SetActive(true);
+
+        if (feedbackCoroutine != null)
+            StopCoroutine(feedbackCoroutine);
+
+        feedbackCoroutine =
+            StartCoroutine(
+                HideFeedbackAfterDelay()
+            );
+    }
+
+    private IEnumerator HideFeedbackAfterDelay()
+    {
+        yield return new WaitForSeconds(
+            feedbackDuration
+        );
+
+        HideWrongFeedback();
+
+        feedbackCoroutine = null;
+    }
+
+    private void HideWrongFeedback()
+    {
+        if (feedbackCoroutine != null)
+        {
+            StopCoroutine(feedbackCoroutine);
+
+            feedbackCoroutine = null;
+        }
+
+        if (wrongClickFeedback != null)
+            wrongClickFeedback.SetActive(false);
+    }
+
+    // =========================================================
+    // UI
+    // =========================================================
+
+    private void SetInstruction(
+        string message)
+    {
+        if (instructionText != null)
+            instructionText.text = message;
+    }
+
+    private void UpdateProgress()
+    {
+        if (progressText == null)
+            return;
+
+        int totalComponents =
+            components != null
+                ? components.Length
+                : 0;
+
+        int completedComponents =
+            Mathf.Clamp(
+                currentStep,
+                0,
+                totalComponents
+            );
+
+        progressText.text =
+            "Progress: " +
+            completedComponents +
+            "/" +
+            totalComponents;
+    }
+
+    private int GetDisplayStepNumber()
+    {
+        /*
+         * 0 PSU       = Step 2
+         * 1 GPU       = Step 3
+         * 2 RAM       = Step 4
+         * 3 Fan       = Step 5
+         * 4 Cooler    = Step 6
+         * 5 CPU       = Step 7
+         * 6 SSD1      = Step 9
+         * 7 SSD2      = Step 11
+         * 8 Motherboard = Step 12
+         */
+
+        if (currentStep <= 0)
+            return 2;
+
+        if (currentStep >= 6)
+            return 9 + ((currentStep - 6) * 2);
+
+        return currentStep + 2;
+    }
+
+    // =========================================================
+    // RESULTS
     // =========================================================
 
     private void CompleteDisassembly()
     {
-        if (instructionText != null)
+        disassemblyComplete = true;
+
+        DisableAllCables();
+
+        if (components != null)
         {
-            instructionText.text =
-                "DISASSEMBLY COMPLETE!";
+            foreach (ComponentGroup group
+                     in components)
+            {
+                if (group == null ||
+                    group.parts == null)
+                    continue;
+
+                foreach (DisassemblyComponent part
+                         in group.parts)
+                {
+                    if (part != null)
+                        part.SetInteractable(false);
+                }
+            }
         }
 
-        if (progressText != null)
+        HideWrongFeedback();
+
+        ShowResultsPanel();
+    }
+
+    private void ShowResultsPanel()
+    {
+        if (resultsPanel != null)
+            resultsPanel.SetActive(true);
+
+        int totalInteractions =
+            correctClicks + mistakeClicks;
+
+        float accuracy =
+            totalInteractions > 0
+                ? ((float)correctClicks /
+                   totalInteractions) * 100f
+                : 0f;
+
+        int score =
+            Mathf.RoundToInt(accuracy);
+
+        int xp =
+            Mathf.RoundToInt(score * 1.5f);
+
+        int stars;
+
+        if (accuracy >= 90f)
+            stars = 3;
+        else if (accuracy >= 70f)
+            stars = 2;
+        else
+            stars = 1;
+
+        if (resultsTitle != null)
+            resultsTitle.text =
+                "DISASSEMBLY COMPLETE";
+
+        if (starText != null)
+            starText.text =
+                "Stars: " + stars + "/3";
+
+        if (performanceText != null)
         {
-            progressText.text =
-                "Complete!";
+            if (accuracy >= 90f)
+            {
+                performanceText.text =
+                    "Excellent! Great job!";
+            }
+            else if (accuracy >= 70f)
+            {
+                performanceText.text =
+                    "Good job! Keep practicing!";
+            }
+            else
+            {
+                performanceText.text =
+                    "Keep practicing!";
+            }
         }
 
-        Debug.Log(
-            "=== ALL DISASSEMBLY STEPS COMPLETE ==="
-        );
+        if (finalScoreText != null)
+            finalScoreText.text =
+                "Score: " + score;
+
+        if (finalXPText != null)
+            finalXPText.text =
+                "XP: " + xp;
+
+        if (finalCorrectText != null)
+            finalCorrectText.text =
+                "Correct Interactions: " +
+                correctClicks;
+
+        if (finalMistakesText != null)
+            finalMistakesText.text =
+                "Wrong Clicks: " +
+                mistakeClicks;
+
+        if (finalAccuracyText != null)
+        {
+            finalAccuracyText.text =
+                "Accuracy: " +
+                accuracy.ToString("F1") +
+                "%";
+        }
+
+        if (retryButton != null)
+        {
+            retryButton.onClick.RemoveAllListeners();
+
+            retryButton.onClick.AddListener(
+                RetryLevel
+            );
+        }
+    }
+
+    // =========================================================
+    // RETRY
+    // =========================================================
+
+    private void RetryLevel()
+    {
+        UnityEngine.SceneManagement.Scene currentScene =
+            UnityEngine.SceneManagement.SceneManager
+                .GetActiveScene();
+
+        UnityEngine.SceneManagement.SceneManager
+            .LoadScene(currentScene.name);
     }
 }
