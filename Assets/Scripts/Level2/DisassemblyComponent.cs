@@ -28,7 +28,6 @@ public class DisassemblyComponent : MonoBehaviour
 
     private Collider[] ownColliders;
     private Renderer[] ownRenderers;
-
     private Material[] fadeMaterials;
 
     private bool isInteractable = false;
@@ -47,27 +46,8 @@ public class DisassemblyComponent : MonoBehaviour
             manager = FindAnyObjectByType<DisassemblyManager>();
     }
 
-    // =========================================================
-    // CACHE
-    // =========================================================
-
     private void CacheComponents()
     {
-        /*
-         * IMPORTANT:
-         *
-         * We collect all colliders/renderers underneath this
-         * component, but a child collider that belongs to another
-         * DisassemblyComponent is NOT claimed by this component.
-         *
-         * This prevents:
-         *
-         * Motherboard
-         *   └── CPU Cooler Fan
-         *
-         * from causing the Motherboard to receive the Fan click.
-         */
-
         List<Collider> colliderList = new List<Collider>();
         List<Renderer> rendererList = new List<Renderer>();
 
@@ -86,9 +66,7 @@ public class DisassemblyComponent : MonoBehaviour
                 FindNearestComponentOwner(col.transform);
 
             if (owner == this)
-            {
                 colliderList.Add(col);
-            }
         }
 
         foreach (Renderer rend in foundRenderers)
@@ -100,18 +78,24 @@ public class DisassemblyComponent : MonoBehaviour
                 FindNearestComponentOwner(rend.transform);
 
             if (owner == this)
-            {
                 rendererList.Add(rend);
-            }
         }
 
         ownColliders = colliderList.ToArray();
         ownRenderers = rendererList.ToArray();
+
+        Debug.Log(
+            "CACHED: " +
+            gameObject.name +
+            " | Colliders: " +
+            ownColliders.Length +
+            " | Renderers: " +
+            ownRenderers.Length
+        );
     }
 
     private DisassemblyComponent FindNearestComponentOwner(
-        Transform target
-    )
+        Transform target)
     {
         Transform current = target;
 
@@ -129,10 +113,6 @@ public class DisassemblyComponent : MonoBehaviour
         return null;
     }
 
-    // =========================================================
-    // CLICK FORWARDERS
-    // =========================================================
-
     private void SetupChildClickForwarders()
     {
         if (ownColliders == null)
@@ -144,7 +124,7 @@ public class DisassemblyComponent : MonoBehaviour
                 continue;
 
             ChildComponentClickForwarder forwarder =
-                col.GetComponent<ChildComponentClickForwarder>();
+                col.gameObject.GetComponent<ChildComponentClickForwarder>();
 
             if (forwarder == null)
             {
@@ -153,16 +133,26 @@ public class DisassemblyComponent : MonoBehaviour
             }
 
             forwarder.SetOwner(this);
+
+            Debug.Log(
+                "FORWARDER SET: " +
+                col.gameObject.name +
+                " → " +
+                gameObject.name
+            );
         }
     }
-
-    // =========================================================
-    // INTERACTION
-    // =========================================================
 
     public void SetInteractable(bool value)
     {
         isInteractable = value;
+
+        Debug.Log(
+            "INTERACTABLE: " +
+            gameObject.name +
+            " = " +
+            value
+        );
 
         if (ownColliders == null)
             return;
@@ -173,49 +163,75 @@ public class DisassemblyComponent : MonoBehaviour
                 continue;
 
             col.enabled = value;
+
+            Debug.Log(
+                "COLLIDER: " +
+                col.gameObject.name +
+                " = " +
+                col.enabled
+            );
         }
     }
 
     public bool IsInteractable()
     {
-        return isInteractable &&
-               !isBeingRemoved &&
+        return !isBeingRemoved &&
                !isRemoved;
     }
 
     public bool IsVisibleForInteraction()
     {
+        Debug.Log(
+            "VISIBILITY CHECK | " +
+            gameObject.name +
+            " | isRemoved=" + isRemoved +
+            " | isBeingRemoved=" + isBeingRemoved +
+            " | activeInHierarchy=" + gameObject.activeInHierarchy
+        );
+
         return !isRemoved &&
                !isBeingRemoved &&
                gameObject.activeInHierarchy;
     }
-
     public void HandleClick()
     {
-        /*
-         * Only active components are allowed to report clicks.
-         *
-         * This is important because:
-         * - removed parts = ignored
-         * - inactive parts = ignored
-         * - unrelated objects = never reach this method
-         */
+        Debug.Log(
+            "HANDLE CLICK: " +
+            gameObject.name
+        );
 
         if (!IsInteractable())
+        {
+            Debug.Log(
+                "HANDLE CLICK BLOCKED: " +
+                gameObject.name
+            );
+
             return;
+        }
 
         if (manager == null)
             manager = FindAnyObjectByType<DisassemblyManager>();
 
         if (manager == null)
+        {
+            Debug.LogError(
+                "MANAGER NULL: " +
+                gameObject.name
+            );
+
             return;
+        }
+
+        Debug.Log(
+            "COMPONENT CLICKED: " +
+            gameObject.name +
+            " | Manager: " +
+            manager.gameObject.name
+        );
 
         manager.ComponentClicked(this);
     }
-
-    // =========================================================
-    // REMOVAL
-    // =========================================================
 
     public void RemoveComponent()
     {
@@ -233,10 +249,6 @@ public class DisassemblyComponent : MonoBehaviour
     {
         Vector3 startPosition = transform.position;
 
-        // -----------------------------------------------------
-        // GPU CUSTOM MOVEMENT
-        // -----------------------------------------------------
-
         if (useCustomMovement)
         {
             Vector3 rightTarget =
@@ -250,9 +262,15 @@ public class DisassemblyComponent : MonoBehaviour
                 elapsed += Time.deltaTime;
 
                 float t =
-                    Mathf.Clamp01(elapsed / moveDuration);
+                    Mathf.Clamp01(
+                        elapsed / moveDuration
+                    );
 
-                t = Mathf.SmoothStep(0f, 1f, t);
+                t = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    t
+                );
 
                 transform.position =
                     Vector3.Lerp(
@@ -275,9 +293,15 @@ public class DisassemblyComponent : MonoBehaviour
                 elapsed += Time.deltaTime;
 
                 float t =
-                    Mathf.Clamp01(elapsed / moveDuration);
+                    Mathf.Clamp01(
+                        elapsed / moveDuration
+                    );
 
-                t = Mathf.SmoothStep(0f, 1f, t);
+                t = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    t
+                );
 
                 transform.position =
                     Vector3.Lerp(
@@ -291,10 +315,6 @@ public class DisassemblyComponent : MonoBehaviour
         }
         else
         {
-            // -------------------------------------------------
-            // NORMAL MOVEMENT
-            // -------------------------------------------------
-
             Vector3 targetPosition =
                 startPosition +
                 Vector3.forward * moveDistance;
@@ -306,9 +326,15 @@ public class DisassemblyComponent : MonoBehaviour
                 elapsed += Time.deltaTime;
 
                 float t =
-                    Mathf.Clamp01(elapsed / moveDuration);
+                    Mathf.Clamp01(
+                        elapsed / moveDuration
+                    );
 
-                t = Mathf.SmoothStep(0f, 1f, t);
+                t = Mathf.SmoothStep(
+                    0f,
+                    1f,
+                    t
+                );
 
                 transform.position =
                     Vector3.Lerp(
@@ -321,10 +347,6 @@ public class DisassemblyComponent : MonoBehaviour
             }
         }
 
-        // -----------------------------------------------------
-        // FADE
-        // -----------------------------------------------------
-
         if (fadeOnRemoval)
         {
             PrepareMaterialsForFade();
@@ -336,7 +358,9 @@ public class DisassemblyComponent : MonoBehaviour
                 elapsed += Time.deltaTime;
 
                 float t =
-                    Mathf.Clamp01(elapsed / fadeDuration);
+                    Mathf.Clamp01(
+                        elapsed / fadeDuration
+                    );
 
                 SetFade(t);
 
@@ -344,12 +368,7 @@ public class DisassemblyComponent : MonoBehaviour
             }
         }
 
-        // -----------------------------------------------------
-        // DISABLE
-        // -----------------------------------------------------
-
         DisableRenderers();
-
         DisableAdditionalObjects();
 
         isRemoved = true;
@@ -357,10 +376,6 @@ public class DisassemblyComponent : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
-    // =========================================================
-    // FADE
-    // =========================================================
 
     private void PrepareMaterialsForFade()
     {
@@ -405,16 +420,20 @@ public class DisassemblyComponent : MonoBehaviour
                 material.SetFloat("_Alpha", 1f);
 
             if (material.HasProperty("_SrcBlend"))
+            {
                 material.SetFloat(
                     "_SrcBlend",
                     (float)UnityEngine.Rendering.BlendMode.SrcAlpha
                 );
+            }
 
             if (material.HasProperty("_DstBlend"))
+            {
                 material.SetFloat(
                     "_DstBlend",
                     (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha
                 );
+            }
 
             if (material.HasProperty("_ZWrite"))
                 material.SetFloat("_ZWrite", 0f);
@@ -442,7 +461,10 @@ public class DisassemblyComponent : MonoBehaviour
 
                 color.a = alpha;
 
-                material.SetColor("_Color", color);
+                material.SetColor(
+                    "_Color",
+                    color
+                );
             }
 
             if (material.HasProperty("_BaseColor"))
@@ -459,7 +481,12 @@ public class DisassemblyComponent : MonoBehaviour
             }
 
             if (material.HasProperty("_Alpha"))
-                material.SetFloat("_Alpha", alpha);
+            {
+                material.SetFloat(
+                    "_Alpha",
+                    alpha
+                );
+            }
         }
     }
 
@@ -489,24 +516,68 @@ public class DisassemblyComponent : MonoBehaviour
 }
 
 
-// =============================================================
-// CHILD CLICK FORWARDER
-// =============================================================
-
 public class ChildComponentClickForwarder : MonoBehaviour
 {
-    private DisassemblyComponent owner;
+    private DisassemblyComponent parentComponent;
 
-    public void SetOwner(DisassemblyComponent component)
+    public void SetOwner(DisassemblyComponent owner)
     {
-        owner = component;
+        parentComponent = owner;
+    }
+
+    private void Awake()
+    {
+        // If SetOwner() hasn't assigned it,
+        // try to find a DisassemblyComponent up the hierarchy.
+        if (parentComponent == null)
+        {
+            Transform current = transform;
+
+            while (current != null)
+            {
+                DisassemblyComponent component =
+                    current.GetComponent<DisassemblyComponent>();
+
+                if (component != null)
+                {
+                    parentComponent = component;
+                    break;
+                }
+
+                current = current.parent;
+            }
+        }
+
+        if (parentComponent == null)
+        {
+            Debug.LogWarning(
+                "NO DISASSEMBLY COMPONENT FOUND FOR: " +
+                gameObject.name
+            );
+        }
     }
 
     private void OnMouseDown()
     {
-        if (owner == null)
-            return;
+        Debug.Log(
+            "CLICK HIT: " +
+            gameObject.name
+        );
 
-        owner.HandleClick();
+        if (parentComponent == null)
+        {
+            Debug.LogWarning(
+                "CANNOT FORWARD CLICK: " +
+                gameObject.name
+            );
+            return;
+        }
+
+        Debug.Log(
+            "FORWARDING TO: " +
+            parentComponent.gameObject.name
+        );
+
+        parentComponent.HandleClick();
     }
 }

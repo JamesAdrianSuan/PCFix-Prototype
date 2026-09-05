@@ -64,10 +64,6 @@ public class DisassemblyManager : MonoBehaviour
 
     private Coroutine feedbackCoroutine;
 
-    // =========================================================
-    // START
-    // =========================================================
-
     private void Start()
     {
         if (resultsPanel != null)
@@ -81,10 +77,6 @@ public class DisassemblyManager : MonoBehaviour
 
         SetupCurrentStep();
     }
-
-    // =========================================================
-    // SETUP CABLE MANAGERS
-    // =========================================================
 
     private void SetupCableManagers()
     {
@@ -104,10 +96,6 @@ public class DisassemblyManager : MonoBehaviour
             ssd2Cable.Setup(this);
     }
 
-    // =========================================================
-    // SETUP CURRENT STEP
-    // =========================================================
-
     private void SetupCurrentStep()
     {
         if (disassemblyComplete)
@@ -117,13 +105,10 @@ public class DisassemblyManager : MonoBehaviour
 
         DisableAllCables();
 
-        // =====================================================
-        // STEP 1 - PSU CABLES
-        // =====================================================
-
         if (currentStep == 0 && !psuCablesComplete)
         {
             EnablePSUCables();
+            EnableActiveComponents();
 
             SetInstruction(
                 "STEP 1\n\nDisconnect PSU cables"
@@ -133,10 +118,6 @@ public class DisassemblyManager : MonoBehaviour
 
             return;
         }
-
-        // =====================================================
-        // STEP 2 - PSU
-        // =====================================================
 
         if (currentStep == 0 && psuCablesComplete)
         {
@@ -151,14 +132,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 1 CABLE
-        // =====================================================
-
         if (currentStep == 6 && !ssd1CableComplete)
         {
-            DisableAllCables();
-
             if (ssd1Cable != null)
                 ssd1Cable.SetInteractable(true);
 
@@ -173,10 +148,6 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 1
-        // =====================================================
-
         if (currentStep == 6 && ssd1CableComplete)
         {
             EnableActiveComponents();
@@ -190,14 +161,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 2 CABLE
-        // =====================================================
-
         if (currentStep == 7 && !ssd2CableComplete)
         {
-            DisableAllCables();
-
             if (ssd2Cable != null)
                 ssd2Cable.SetInteractable(true);
 
@@ -212,10 +177,6 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 2
-        // =====================================================
-
         if (currentStep == 7 && ssd2CableComplete)
         {
             EnableActiveComponents();
@@ -229,13 +190,10 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // NORMAL COMPONENT STEPS
-        // =====================================================
-
         EnableActiveComponents();
 
-        if (currentStep < components.Length)
+        if (components != null &&
+            currentStep < components.Length)
         {
             SetInstruction(
                 "STEP " +
@@ -247,10 +205,6 @@ public class DisassemblyManager : MonoBehaviour
 
         UpdateProgress();
     }
-
-    // =========================================================
-    // ACTIVE COMPONENTS
-    // =========================================================
 
     private void EnableActiveComponents()
     {
@@ -269,7 +223,8 @@ public class DisassemblyManager : MonoBehaviour
                 if (part == null)
                     continue;
 
-                bool active = IsComponentStillActive(part);
+                bool active =
+                    IsComponentStillActive(part);
 
                 part.SetInteractable(active);
             }
@@ -283,10 +238,21 @@ public class DisassemblyManager : MonoBehaviour
             return false;
 
         if (!component.IsVisibleForInteraction())
+        {
+            Debug.Log(
+                "ACTIVE CHECK FAILED: Not visible | " +
+                component.gameObject.name
+            );
             return false;
+        }
 
         if (components == null)
+        {
+            Debug.Log(
+                "ACTIVE CHECK FAILED: components is null"
+            );
             return false;
+        }
 
         for (int i = 0; i < components.Length; i++)
         {
@@ -297,24 +263,44 @@ public class DisassemblyManager : MonoBehaviour
 
             foreach (DisassemblyComponent part in group.parts)
             {
+                if (part == null)
+                    continue;
+
+                Debug.Log(
+                    "COMPARE | Clicked=" +
+                    component.gameObject.name +
+                    " | Array=" +
+                    part.gameObject.name +
+                    " | SameReference=" +
+                    (part == component) +
+                    " | Group=" + i
+                );
+
                 if (part == component)
                 {
-                    // Any group at or after the current group
-                    // is still active.
-                    return i >= currentStep;
+                    bool allowed = i >= currentStep;
+
+                    Debug.Log(
+                        "MATCH FOUND | Group=" + i +
+                        " | CurrentStep=" + currentStep +
+                        " | Allowed=" + allowed
+                    );
+
+                    return allowed;
                 }
             }
         }
 
+        Debug.Log(
+            "ACTIVE CHECK FAILED: Component was not found in any group | " +
+            component.gameObject.name
+        );
+
         return false;
     }
 
-    // =========================================================
-    // COMPONENT CLICK
-    // =========================================================
-
     public void ComponentClicked(
-        DisassemblyComponent component)
+     DisassemblyComponent component)
     {
         if (disassemblyComplete)
             return;
@@ -322,15 +308,28 @@ public class DisassemblyManager : MonoBehaviour
         if (component == null)
             return;
 
-        // Already removed / inactive = do nothing.
+        Debug.Log(
+            "CLICK DEBUG | " +
+            component.gameObject.name +
+            " | CurrentStep=" +
+            currentStep
+        );
+
+        Debug.Log("CHECKING ACTIVE: " + component.gameObject.name);
+
         if (!IsComponentStillActive(component))
+        {
+            Debug.LogWarning(
+                "BLOCKED! baseMB_13 is NOT considered active. " +
+                "CurrentStep=" + currentStep
+            );
             return;
+        }
 
-        // =====================================================
-        // PSU CABLE STAGE
-        // =====================================================
+        Debug.Log("ACTIVE CHECK PASSED: " + component.gameObject.name);
 
-        if (currentStep == 0 && !psuCablesComplete)
+        if (currentStep == 0 &&
+            !psuCablesComplete)
         {
             RegisterMistake(
                 "❌ Incorrect!\n\n" +
@@ -340,11 +339,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 1 CABLE STAGE
-        // =====================================================
-
-        if (currentStep == 6 && !ssd1CableComplete)
+        if (currentStep == 6 &&
+            !ssd1CableComplete)
         {
             RegisterMistake(
                 "❌ Incorrect!\n\n" +
@@ -354,11 +350,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 2 CABLE STAGE
-        // =====================================================
-
-        if (currentStep == 7 && !ssd2CableComplete)
+        if (currentStep == 7 &&
+            !ssd2CableComplete)
         {
             RegisterMistake(
                 "❌ Incorrect!\n\n" +
@@ -368,11 +361,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // NORMAL COMPONENT STEP
-        // =====================================================
-
-        if (currentStep >= components.Length)
+        if (components == null ||
+            currentStep >= components.Length)
             return;
 
         ComponentGroup currentGroup =
@@ -396,10 +386,6 @@ public class DisassemblyManager : MonoBehaviour
             }
         }
 
-        // =====================================================
-        // CORRECT
-        // =====================================================
-
         if (correctComponent)
         {
             correctClicks++;
@@ -410,10 +396,6 @@ public class DisassemblyManager : MonoBehaviour
         }
         else
         {
-            // =================================================
-            // WRONG ACTIVE COMPONENT
-            // =================================================
-
             RegisterMistake(
                 "❌ Incorrect!\n\n" +
                 "💡 Hint: Please remove " +
@@ -422,10 +404,6 @@ public class DisassemblyManager : MonoBehaviour
             );
         }
     }
-
-    // =========================================================
-    // CABLE CLICK
-    // =========================================================
 
     public void CableClicked(
         DisassemblyCable cable)
@@ -436,15 +414,11 @@ public class DisassemblyManager : MonoBehaviour
         if (cable == null)
             return;
 
-        // Already disconnected = do nothing.
         if (disconnectedCables.Contains(cable))
             return;
 
-        // =====================================================
-        // PSU CABLE STAGE
-        // =====================================================
-
-        if (currentStep == 0 && !psuCablesComplete)
+        if (currentStep == 0 &&
+            !psuCablesComplete)
         {
             bool correctCable = false;
 
@@ -471,10 +445,6 @@ public class DisassemblyManager : MonoBehaviour
                 return;
             }
 
-            // -------------------------------------------------
-            // CORRECT PSU CABLE
-            // -------------------------------------------------
-
             correctClicks++;
 
             HideWrongFeedback();
@@ -482,9 +452,6 @@ public class DisassemblyManager : MonoBehaviour
             disconnectedCables.Add(cable);
 
             cable.SetInteractable(false);
-
-            // IMPORTANT:
-            // Your DisassemblyCable.cs uses Detach().
             cable.Detach();
 
             if (AreAllPSUCablesDisconnected())
@@ -515,11 +482,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 1 CABLE
-        // =====================================================
-
-        if (currentStep == 6 && !ssd1CableComplete)
+        if (currentStep == 6 &&
+            !ssd1CableComplete)
         {
             if (cable != ssd1Cable)
             {
@@ -540,8 +504,6 @@ public class DisassemblyManager : MonoBehaviour
             disconnectedCables.Add(cable);
 
             cable.SetInteractable(false);
-
-            // Your actual cable method.
             cable.Detach();
 
             EnableActiveComponents();
@@ -555,11 +517,8 @@ public class DisassemblyManager : MonoBehaviour
             return;
         }
 
-        // =====================================================
-        // SSD 2 CABLE
-        // =====================================================
-
-        if (currentStep == 7 && !ssd2CableComplete)
+        if (currentStep == 7 &&
+            !ssd2CableComplete)
         {
             if (cable != ssd2Cable)
             {
@@ -580,8 +539,6 @@ public class DisassemblyManager : MonoBehaviour
             disconnectedCables.Add(cable);
 
             cable.SetInteractable(false);
-
-            // Your actual cable method.
             cable.Detach();
 
             EnableActiveComponents();
@@ -596,12 +553,11 @@ public class DisassemblyManager : MonoBehaviour
         }
     }
 
-    // =========================================================
-    // COMPLETE CURRENT COMPONENT
-    // =========================================================
-
     private void CompleteCurrentStep()
     {
+        if (components == null)
+            return;
+
         if (currentStep >= components.Length)
         {
             CompleteDisassembly();
@@ -616,21 +572,32 @@ public class DisassemblyManager : MonoBehaviour
 
         if (group.parts != null)
         {
-            foreach (DisassemblyComponent part
-                     in group.parts)
+            foreach (DisassemblyComponent part in group.parts)
             {
                 if (part == null)
                     continue;
 
                 part.RemoveComponent();
-
-                if (inventory != null)
-                {
-                    inventory.MarkRemoved(
-                        group.componentName
-                    );
-                }
             }
+        }
+
+        // 👇 DITO ilagay ang inventory code
+        if (inventory != null)
+        {
+            Debug.Log(
+                "CALLING INVENTORY: " +
+                group.componentName
+            );
+
+            inventory.MarkRemoved(
+                group.componentName
+            );
+        }
+        else
+        {
+            Debug.LogError(
+                "INVENTORY IS NULL!"
+            );
         }
 
         currentStep++;
@@ -643,10 +610,6 @@ public class DisassemblyManager : MonoBehaviour
 
         SetupCurrentStep();
     }
-
-    // =========================================================
-    // PSU CABLES
-    // =========================================================
 
     private void EnablePSUCables()
     {
@@ -661,9 +624,7 @@ public class DisassemblyManager : MonoBehaviour
                 continue;
 
             if (!disconnectedCables.Contains(cable))
-            {
                 cable.SetInteractable(true);
-            }
         }
     }
 
@@ -707,20 +668,14 @@ public class DisassemblyManager : MonoBehaviour
         return true;
     }
 
-    // =========================================================
-    // WRONG CLICK FEEDBACK
-    // =========================================================
-
-    private void RegisterMistake(
-        string message)
+    private void RegisterMistake(string message)
     {
         mistakeClicks++;
 
         ShowWrongFeedback(message);
     }
 
-    private void ShowWrongFeedback(
-        string message)
+    private void ShowWrongFeedback(string message)
     {
         if (wrongClickFeedbackText != null)
             wrongClickFeedbackText.text = message;
@@ -761,12 +716,7 @@ public class DisassemblyManager : MonoBehaviour
             wrongClickFeedback.SetActive(false);
     }
 
-    // =========================================================
-    // UI
-    // =========================================================
-
-    private void SetInstruction(
-        string message)
+    private void SetInstruction(string message)
     {
         if (instructionText != null)
             instructionText.text = message;
@@ -799,14 +749,14 @@ public class DisassemblyManager : MonoBehaviour
     private int GetDisplayStepNumber()
     {
         /*
-         * 0 PSU       = Step 2
-         * 1 GPU       = Step 3
-         * 2 RAM       = Step 4
-         * 3 Fan       = Step 5
-         * 4 Cooler    = Step 6
-         * 5 CPU       = Step 7
-         * 6 SSD1      = Step 9
-         * 7 SSD2      = Step 11
+         * 0 PSU         = Step 2
+         * 1 GPU         = Step 3
+         * 2 RAM         = Step 4
+         * 3 Fan         = Step 5
+         * 4 Cooler      = Step 6
+         * 5 CPU         = Step 7
+         * 6 SSD1        = Step 9
+         * 7 SSD2        = Step 11
          * 8 Motherboard = Step 12
          */
 
@@ -818,10 +768,6 @@ public class DisassemblyManager : MonoBehaviour
 
         return currentStep + 2;
     }
-
-    // =========================================================
-    // RESULTS
-    // =========================================================
 
     private void CompleteDisassembly()
     {
@@ -848,6 +794,12 @@ public class DisassemblyManager : MonoBehaviour
         }
 
         HideWrongFeedback();
+        // Hide instruction and progress text
+        if (instructionText != null)
+            instructionText.gameObject.SetActive(false);
+
+        if (progressText != null)
+            progressText.gameObject.SetActive(false);
 
         ShowResultsPanel();
     }
@@ -944,10 +896,6 @@ public class DisassemblyManager : MonoBehaviour
         }
     }
 
-    // =========================================================
-    // RETRY
-    // =========================================================
-
     private void RetryLevel()
     {
         UnityEngine.SceneManagement.Scene currentScene =
@@ -957,4 +905,5 @@ public class DisassemblyManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager
             .LoadScene(currentScene.name);
     }
+
 }

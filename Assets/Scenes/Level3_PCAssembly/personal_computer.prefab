@@ -99,6 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6964376897146119915}
+  - component: {fileID: 8040520550259466639}
   m_Layer: 0
   m_Name: ssd.001_4
   m_TagString: Untagged
@@ -123,6 +124,28 @@ Transform:
   - {fileID: 2804429252328626600}
   m_Father: {fileID: 6270498272242923365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8040520550259466639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44042286439875109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: SSD 2
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &67202482208716357
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +492,8 @@ GameObject:
   - component: {fileID: 9067422544382304791}
   - component: {fileID: 9183595496685422788}
   - component: {fileID: 7039238317562088412}
+  - component: {fileID: 5622166498472855499}
+  - component: {fileID: 3666219522846078151}
   m_Layer: 0
   m_Name: Object_8
   m_TagString: Untagged
@@ -548,6 +573,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5622166498472855499
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449329903494446322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6217673487165757016, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &3666219522846078151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449329903494446322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Power Supply
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &457789674916460677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1323,8 @@ GameObject:
   - component: {fileID: 7278006015517257439}
   - component: {fileID: 3087146145221523904}
   - component: {fileID: 4755747944540658769}
+  - component: {fileID: 1122485111227803034}
+  - component: {fileID: 7857034231681472198}
   m_Layer: 0
   m_Name: Object_7
   m_TagString: Untagged
@@ -1333,6 +1404,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1122485111227803034
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700557550856036896}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1470791998681486800, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &7857034231681472198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700557550856036896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Power Supply
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &764186058622022009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1703,8 @@ GameObject:
   - component: {fileID: 9168969314718575532}
   - component: {fileID: 7961326869020199735}
   - component: {fileID: 4507021297380690658}
+  - component: {fileID: 1400770086221053929}
+  - component: {fileID: 3041380175491102338}
   m_Layer: 0
   m_Name: Object_37
   m_TagString: Untagged
@@ -1667,6 +1784,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1400770086221053929
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887820044598762594}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 654731183051977060, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &3041380175491102338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887820044598762594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Motherboard
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &1029221215444851157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,6 +2173,8 @@ GameObject:
   - component: {fileID: 4708331790168893677}
   - component: {fileID: 2333863191982138593}
   - component: {fileID: 1202858237457248353}
+  - component: {fileID: 9199427278712617573}
+  - component: {fileID: 7348410539246221655}
   m_Layer: 0
   m_Name: Object_158
   m_TagString: Untagged
@@ -2091,6 +2254,46 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9199427278712617573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210085095787570163}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9155462668151389690, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &7348410539246221655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210085095787570163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: SSD 2
+  additionalObjects: []
+  sharedConnector: {fileID: 0}
+  connectorRequiredCables: []
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &1335850311739764921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2305,8 @@ GameObject:
   - component: {fileID: 3872629528113130840}
   - component: {fileID: 5278385140817813572}
   - component: {fileID: 7457451169879841833}
+  - component: {fileID: 8573425476661189204}
+  - component: {fileID: 1767296619118442901}
   m_Layer: 0
   m_Name: Object_31
   m_TagString: Untagged
@@ -2181,6 +2386,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8573425476661189204
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335850311739764921}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7741903623638606651, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &1767296619118442901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335850311739764921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &1350831378596283492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067887474176784872}
+  - component: {fileID: 6534633171266432231}
   m_Layer: 0
   m_Name: Cube.010_7
   m_TagString: Untagged
@@ -2214,6 +2464,28 @@ Transform:
   - {fileID: 527791385651865547}
   m_Father: {fileID: 3266585685163935866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6534633171266432231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350831378596283492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &1362802034433016869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7288761009946804136}
+  - component: {fileID: 4706826652798608606}
   m_Layer: 0
   m_Name: powerSupply_0
   m_TagString: Untagged
@@ -2239,7 +2512,7 @@ Transform:
   m_GameObject: {fileID: 1362802034433016869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.662983, y: 8.573697, z: -0.026780577}
+  m_LocalPosition: {x: 3.79, y: 8.61, z: 0.05}
   m_LocalScale: {x: 1.6286631, y: 0.98970383, z: 1.7340795}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2251,6 +2524,31 @@ Transform:
   - {fileID: 5942174212936176261}
   m_Father: {fileID: 6270498272242923365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4706826652798608606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362802034433016869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: PSU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 7058731454735437502}
+  - {fileID: 5151017699683241267}
+  - {fileID: 866953608817124583}
 --- !u!1 &1461257569268299284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2804,8 @@ GameObject:
   - component: {fileID: 3968826497856066809}
   - component: {fileID: 6226659853873388205}
   - component: {fileID: 3241432106060590090}
+  - component: {fileID: 7759138600758664701}
+  - component: {fileID: 4392575050835295527}
   m_Layer: 0
   m_Name: Object_102
   m_TagString: Untagged
@@ -2585,6 +2885,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7759138600758664701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748082851934399412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: RAM
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
+--- !u!64 &4392575050835295527
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748082851934399412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6905582231584807038, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
 --- !u!1 &1765067864311360493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,6 +2940,8 @@ GameObject:
   - component: {fileID: 3333023865661609562}
   - component: {fileID: 5671838500996579540}
   - component: {fileID: 6702681118066419293}
+  - component: {fileID: 3986457391144256715}
+  - component: {fileID: 5935183964887604593}
   m_Layer: 0
   m_Name: Object_162
   m_TagString: Untagged
@@ -2675,6 +3021,48 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3986457391144256715
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765067864311360493}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6120775416943260686, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &5935183964887604593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765067864311360493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: PSU
+  additionalObjects:
+  - {fileID: 6204369573743672755}
+  sharedConnector: {fileID: 3069175514534325942}
+  connectorRequiredCables:
+  - {fileID: 5935183964887604593}
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &1837626479919310144
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3434,8 @@ GameObject:
   - component: {fileID: 6236450632006880818}
   - component: {fileID: 7444112646668121685}
   - component: {fileID: 7411743956138581150}
+  - component: {fileID: 1171402556217947896}
+  - component: {fileID: 5126715135736742019}
   m_Layer: 0
   m_Name: Object_156
   m_TagString: Untagged
@@ -3125,6 +3515,46 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1171402556217947896
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085199982270587920}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3109821279322756852, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &5126715135736742019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085199982270587920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: SSD 1
+  additionalObjects: []
+  sharedConnector: {fileID: 0}
+  connectorRequiredCables: []
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &2155721583666169342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,6 +3656,8 @@ GameObject:
   - component: {fileID: 8925627121370400778}
   - component: {fileID: 8009704806500099932}
   - component: {fileID: 7439687136817478472}
+  - component: {fileID: 5798047201026520806}
+  - component: {fileID: 7671188998892580703}
   m_Layer: 0
   m_Name: Object_16
   m_TagString: Untagged
@@ -3305,6 +3737,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5798047201026520806
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204670589215766129}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1690106161816645680, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &7671188998892580703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204670589215766129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: 'SSD 1 '
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &2239833482977536550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,6 +3914,8 @@ GameObject:
   - component: {fileID: 3791381114456951124}
   - component: {fileID: 2850951022276283559}
   - component: {fileID: 8524718525649099610}
+  - component: {fileID: 8823518186606386958}
+  - component: {fileID: 527512260012695869}
   m_Layer: 0
   m_Name: Object_45
   m_TagString: Untagged
@@ -3517,6 +3995,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8823518186606386958
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842127800182850247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -99454665372826648, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &527512260012695869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842127800182850247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU cooler
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &2857901263822641847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,6 +4087,8 @@ GameObject:
   - component: {fileID: 5942174212936176261}
   - component: {fileID: 4665254108393839962}
   - component: {fileID: 6876753784955953736}
+  - component: {fileID: 2749164221362505883}
+  - component: {fileID: 1289307192166409592}
   m_Layer: 0
   m_Name: Object_9
   m_TagString: Untagged
@@ -3644,6 +4168,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2749164221362505883
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915082287345860527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3832179527341852573, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &1289307192166409592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915082287345860527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Power Supply
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &2927976187473817268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,6 +4221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3266585685163935866}
+  - component: {fileID: 2012345356101007529}
   m_Layer: 0
   m_Name: Empty_12
   m_TagString: Untagged
@@ -3680,6 +4249,29 @@ Transform:
   - {fileID: 2252018489016392480}
   m_Father: {fileID: 6270498272242923365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012345356101007529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927976187473817268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 9021277863746457932}
 --- !u!1 &3012729824226452902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,6 +4763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7442275272114678046}
+  - component: {fileID: 7165938619090733029}
   m_Layer: 0
   m_Name: fan2_32
   m_TagString: Untagged
@@ -4195,6 +4788,28 @@ Transform:
   - {fileID: 4749039173408397724}
   m_Father: {fileID: 6884093132858393542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7165938619090733029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3219103202989334996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU Cooler Fan
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &3338379007582599997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4252,7 +4867,7 @@ Transform:
   m_GameObject: {fileID: 3388051085962821717}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.00657, y: 0.49026, z: 2.44596}
+  m_LocalPosition: {x: 0, y: 0.023, z: -0.233}
   m_LocalScale: {x: 0.18775104, y: 0.18775111, z: 0.18775111}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4662,6 +5277,8 @@ GameObject:
   - component: {fileID: 338739236299998481}
   - component: {fileID: 94532882962897889}
   - component: {fileID: 5559402783044411933}
+  - component: {fileID: 4956377159272924074}
+  - component: {fileID: 8206419731562394650}
   m_Layer: 0
   m_Name: Object_48
   m_TagString: Untagged
@@ -4741,6 +5358,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4956377159272924074
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642613090728062776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8056404650049266924, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &8206419731562394650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642613090728062776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &3657062004488861612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +5445,8 @@ GameObject:
   - component: {fileID: 9187799038433539008}
   - component: {fileID: 2705935398594891664}
   - component: {fileID: 8357441324959209133}
+  - component: {fileID: 1785102922995485875}
+  - component: {fileID: 6747581882410497670}
   m_Layer: 0
   m_Name: Object_4
   m_TagString: Untagged
@@ -4863,6 +5526,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1785102922995485875
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672244755875272777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7227129179611170996, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &6747581882410497670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672244755875272777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: PSU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &3757675584386312801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,6 +5881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4912678802732236068}
+  - component: {fileID: 8838906872824563558}
   m_Layer: 0
   m_Name: ssd_3
   m_TagString: Untagged
@@ -5198,6 +5906,28 @@ Transform:
   - {fileID: 3254818340360300377}
   m_Father: {fileID: 6270498272242923365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8838906872824563558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111742580199196778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: SSD 1
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &4267333623856498955
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,6 +5939,7 @@ GameObject:
   - component: {fileID: 3649407946515967515}
   - component: {fileID: 1672755586782134765}
   - component: {fileID: 7651086951292195435}
+  - component: {fileID: 1551582340647588756}
   m_Layer: 0
   m_Name: Object_82
   m_TagString: Untagged
@@ -5288,6 +6019,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1551582340647588756
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267333623856498955}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 546644854159085678, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
 --- !u!1 &4291597359638193550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,6 +6050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4891067364153204001}
+  - component: {fileID: 2642739250540619246}
   m_Layer: 0
   m_Name: Plane.001_10
   m_TagString: Untagged
@@ -5322,6 +6076,29 @@ Transform:
   - {fileID: 5534791366780681622}
   m_Father: {fileID: 3266585685163935866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2642739250540619246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291597359638193550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 9021277863746457932}
 --- !u!1 &4329038776835442370
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,9 +6567,11 @@ GameObject:
   - component: {fileID: 9084892093294235681}
   - component: {fileID: 6952316261107352646}
   - component: {fileID: 7216356204611818176}
+  - component: {fileID: 536257005115625342}
+  - component: {fileID: 1842419878640389690}
   m_Layer: 0
   m_Name: Object_160
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5869,6 +6648,48 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &536257005115625342
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761854765565878170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3259418055860323225, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &1842419878640389690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761854765565878170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: PSU
+  additionalObjects:
+  - {fileID: 1079224631895074444}
+  sharedConnector: {fileID: 3069175514534325942}
+  connectorRequiredCables:
+  - {fileID: 1842419878640389690}
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &4770280512343329524
 GameObject:
   m_ObjectHideFlags: 0
@@ -6188,6 +7009,8 @@ GameObject:
   - component: {fileID: 604617793701657047}
   - component: {fileID: 8685881783357853191}
   - component: {fileID: 6549532440077232532}
+  - component: {fileID: 4924121229966133890}
+  - component: {fileID: 2672490164619650897}
   m_Layer: 0
   m_Name: Object_19
   m_TagString: Untagged
@@ -6267,6 +7090,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4924121229966133890
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256944282889292173}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3827478758199882477, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &2672490164619650897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256944282889292173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: SSD 2
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &5260976107806122699
 GameObject:
   m_ObjectHideFlags: 0
@@ -6340,6 +7207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4975599282051023767}
+  - component: {fileID: 7625249612263215364}
   m_Layer: 0
   m_Name: CPU_17
   m_TagString: Untagged
@@ -6364,6 +7232,28 @@ Transform:
   - {fileID: 338739236299998481}
   m_Father: {fileID: 6884093132858393542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7625249612263215364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366008295917124954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &5372977228831218503
 GameObject:
   m_ObjectHideFlags: 0
@@ -6391,7 +7281,7 @@ Transform:
   m_GameObject: {fileID: 5372977228831218503}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6809,6 +7699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942887943183319322}
+  - component: {fileID: 7963181540844079240}
   m_Layer: 0
   m_Name: Mesh_6.002_9
   m_TagString: Untagged
@@ -6832,6 +7723,28 @@ Transform:
   - {fileID: 5551379210090430062}
   m_Father: {fileID: 3266585685163935866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7963181540844079240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890953697447004057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: 
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &5902655137214622347
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,6 +7936,7 @@ GameObject:
   - component: {fileID: 4749039173408397724}
   - component: {fileID: 4058861603444602830}
   - component: {fileID: 1021019835673823738}
+  - component: {fileID: 8767934858672198067}
   m_Layer: 0
   m_Name: Object_83
   m_TagString: Untagged
@@ -7102,6 +8016,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8767934858672198067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022962337988536285}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5637658269963354704, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
 --- !u!1 &6155213780670870857
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,6 +8201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432812480460437906}
+  - component: {fileID: 1517375859197013868}
   m_Layer: 0
   m_Name: baseMB_13
   m_TagString: Untagged
@@ -7290,6 +8227,28 @@ Transform:
   - {fileID: 6727516606374954574}
   m_Father: {fileID: 6884093132858393542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517375859197013868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269377925315047684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Motherboard
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &6306979077224706525
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,6 +8350,8 @@ GameObject:
   - component: {fileID: 5534791366780681622}
   - component: {fileID: 1523342838184495116}
   - component: {fileID: 7921451507578371132}
+  - component: {fileID: 8862711869411485260}
+  - component: {fileID: 4563288826010896492}
   m_Layer: 0
   m_Name: Object_32
   m_TagString: Untagged
@@ -7470,6 +8431,51 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8862711869411485260
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356865541963460805}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1843314317587846354, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &4563288826010896492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356865541963460805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 9021277863746457932}
 --- !u!1 &6371830153195619397
 GameObject:
   m_ObjectHideFlags: 0
@@ -7481,6 +8487,8 @@ GameObject:
   - component: {fileID: 6727516606374954574}
   - component: {fileID: 4681508969476854320}
   - component: {fileID: 2847482352684016009}
+  - component: {fileID: 405621220896448468}
+  - component: {fileID: 9141882727633462430}
   m_Layer: 0
   m_Name: Object_39
   m_TagString: Untagged
@@ -7560,6 +8568,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &405621220896448468
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371830153195619397}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2435184725842214532, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &9141882727633462430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371830153195619397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Motherboard
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &6403098182648486164
 GameObject:
   m_ObjectHideFlags: 0
@@ -7871,6 +8923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2824433960369578525}
+  - component: {fileID: 4577498372041827885}
   m_Layer: 0
   m_Name: Mesh_6.001_8
   m_TagString: Untagged
@@ -7894,6 +8947,28 @@ Transform:
   - {fileID: 2310830936195073423}
   m_Father: {fileID: 3266585685163935866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4577498372041827885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6593705727893916682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &6684909913165137803
 GameObject:
   m_ObjectHideFlags: 0
@@ -8091,6 +9166,8 @@ GameObject:
   - component: {fileID: 6077675524693794667}
   - component: {fileID: 8387028324335371666}
   - component: {fileID: 302429860058634612}
+  - component: {fileID: 2966475271660712987}
+  - component: {fileID: 1862509897344528044}
   m_Layer: 0
   m_Name: Object_47
   m_TagString: Untagged
@@ -8170,6 +9247,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2966475271660712987
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876267722919900857}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8259199609681951372, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &1862509897344528044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6876267722919900857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &6900596053714594528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8433,6 +9554,8 @@ GameObject:
   - component: {fileID: 4671485162454241022}
   - component: {fileID: 3508374535877918008}
   - component: {fileID: 5412007622422426059}
+  - component: {fileID: 7356005958695527288}
+  - component: {fileID: 372890698512313690}
   m_Layer: 0
   m_Name: Object_103
   m_TagString: Untagged
@@ -8512,6 +9635,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7356005958695527288
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190693382987008167}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -283798075082925554, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &372890698512313690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7190693382987008167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: RAM
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &7262417944501576775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8521,6 +9688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4923013006289321446}
+  - component: {fileID: 2558366586193773889}
   m_Layer: 0
   m_Name: coolerRad_16
   m_TagString: Untagged
@@ -8544,6 +9712,30 @@ Transform:
   - {fileID: 3791381114456951124}
   m_Father: {fileID: 6884093132858393542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2558366586193773889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7262417944501576775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: CPU cooler
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 5473865385361906895}
+  - {fileID: 5295272304778794879}
 --- !u!1 &7293245160778566425
 GameObject:
   m_ObjectHideFlags: 0
@@ -8585,6 +9777,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6884093132858393542}
+  - component: {fileID: 502513545854195069}
+  - component: {fileID: 5495847362564746498}
   m_Layer: 0
   m_Name: Empty.001_44
   m_TagString: Untagged
@@ -8638,6 +9832,51 @@ Transform:
   - {fileID: 3342995490176662709}
   m_Father: {fileID: 6270498272242923365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502513545854195069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353045232857263945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Motherboard
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects:
+  - {fileID: 866953608817124583}
+  - {fileID: 0}
+--- !u!114 &5495847362564746498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353045232857263945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9af012c4b1f58744826e48653266460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AssemblyComponent
+  componentName: 
+  additionalObjects: []
+  assemblyDuration: 0.6
+  startingDistance: 0.5
+  useCameraPerspective: 1
+  startRightOffset: 0.25
+  startUpOffset: 0.15
+  snapRotation: 1
+  snapPosition: 1
 --- !u!1 &7366434772178859240
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,6 +10280,8 @@ GameObject:
   - component: {fileID: 7990983952259066211}
   - component: {fileID: 3476363783236715376}
   - component: {fileID: 1994479722621924858}
+  - component: {fileID: 5489767358429720968}
+  - component: {fileID: 1275627995304607669}
   m_Layer: 0
   m_Name: Object_38
   m_TagString: Untagged
@@ -9120,6 +10361,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5489767358429720968
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815465966001197699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8306183954405202422, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &1275627995304607669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815465966001197699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Motherboard
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &7824950817319809173
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,6 +10538,8 @@ GameObject:
   - component: {fileID: 2804429252328626600}
   - component: {fileID: 3628393195114065896}
   - component: {fileID: 7128347601415922577}
+  - component: {fileID: 4912899567897293181}
+  - component: {fileID: 579335226526225326}
   m_Layer: 0
   m_Name: Object_20
   m_TagString: Untagged
@@ -9332,6 +10619,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4912899567897293181
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911590758592870102}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 325039622170336656, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &579335226526225326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911590758592870102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: SSD 2
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &8000032866042340496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9433,6 +10764,8 @@ GameObject:
   - component: {fileID: 727256637988798798}
   - component: {fileID: 5529044569146747309}
   - component: {fileID: 1495113774247304775}
+  - component: {fileID: 3503884392020029495}
+  - component: {fileID: 7432179150046865363}
   m_Layer: 0
   m_Name: Object_166
   m_TagString: Untagged
@@ -9512,6 +10845,49 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3503884392020029495
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8009960575972364422}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6383847469259881758, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &7432179150046865363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8009960575972364422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: PSU
+  additionalObjects:
+  - {fileID: 5151017699683241267}
+  - {fileID: 221277891120228016}
+  - {fileID: 7843198290483803445}
+  sharedConnector: {fileID: 0}
+  connectorRequiredCables: []
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &8038226911690198898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9746,6 +11122,8 @@ GameObject:
   - component: {fileID: 1221086469705124476}
   - component: {fileID: 2435907972235060216}
   - component: {fileID: 5392255425859878446}
+  - component: {fileID: 471884267859078025}
+  - component: {fileID: 5078777622909623992}
   m_Layer: 0
   m_Name: Object_6
   m_TagString: Untagged
@@ -9762,7 +11140,7 @@ Transform:
   m_GameObject: {fileID: 8412545048097687872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.151, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9825,6 +11203,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &471884267859078025
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412545048097687872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4763983586728042654, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &5078777622909623992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412545048097687872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Power Supply
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &8524803105693918756
 GameObject:
   m_ObjectHideFlags: 0
@@ -9836,6 +11258,8 @@ GameObject:
   - component: {fileID: 4864277220624810956}
   - component: {fileID: 8423581219915447147}
   - component: {fileID: 3556002811697011098}
+  - component: {fileID: 5743415487803872578}
+  - component: {fileID: 1135874399783350396}
   m_Layer: 0
   m_Name: Object_30
   m_TagString: Untagged
@@ -9915,6 +11339,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5743415487803872578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524803105693918756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: GPU
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
+--- !u!64 &1135874399783350396
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524803105693918756}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2709290665868551059, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
 --- !u!1 &8567082669718314082
 GameObject:
   m_ObjectHideFlags: 0
@@ -9926,6 +11394,7 @@ GameObject:
   - component: {fileID: 5243004568758878122}
   - component: {fileID: 8509261960830253404}
   - component: {fileID: 2270901332773875924}
+  - component: {fileID: 3600269845859541022}
   m_Layer: 0
   m_Name: Object_76
   m_TagString: Untagged
@@ -10005,6 +11474,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3600269845859541022
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8567082669718314082}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6381221499102287589, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
 --- !u!1 &8592276072429259603
 GameObject:
   m_ObjectHideFlags: 0
@@ -10016,6 +11507,8 @@ GameObject:
   - component: {fileID: 5354804428325921606}
   - component: {fileID: 3234684280368726027}
   - component: {fileID: 2079502834949561709}
+  - component: {fileID: 9092700421493675129}
+  - component: {fileID: 5529101465441098538}
   m_Layer: 0
   m_Name: Object_5
   m_TagString: Untagged
@@ -10095,6 +11588,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9092700421493675129
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592276072429259603}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4977131475666943381, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &5529101465441098538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592276072429259603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: Power Supply
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &8635291561978550017
 GameObject:
   m_ObjectHideFlags: 0
@@ -10636,7 +12173,7 @@ Transform:
   m_GameObject: {fileID: 8860017957844604178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10742,6 +12279,8 @@ GameObject:
   - component: {fileID: 5810039688650082097}
   - component: {fileID: 4183312166131879114}
   - component: {fileID: 8694920332336776553}
+  - component: {fileID: 2136758853888774584}
+  - component: {fileID: 7663057296032153069}
   m_Layer: 0
   m_Name: Object_164
   m_TagString: Untagged
@@ -10821,6 +12360,48 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2136758853888774584
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025188086904725479}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1790804690922649793, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &7663057296032153069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025188086904725479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841bfcf00675814894e3bc54acb3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyCable
+  cableGroup: PSU
+  additionalObjects:
+  - {fileID: 866953608817124583}
+  - {fileID: 1726740260081893689}
+  sharedConnector: {fileID: 0}
+  connectorRequiredCables: []
+  detachDuration: 0.5
+  detachDistance: 0.15
 --- !u!1 &9045642033322897053
 GameObject:
   m_ObjectHideFlags: 0
@@ -10832,6 +12413,8 @@ GameObject:
   - component: {fileID: 3254818340360300377}
   - component: {fileID: 6230950909943798198}
   - component: {fileID: 7554958537228376146}
+  - component: {fileID: 6167982551531883040}
+  - component: {fileID: 4800882226684902766}
   m_Layer: 0
   m_Name: Object_17
   m_TagString: Untagged
@@ -10911,6 +12494,50 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6167982551531883040
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045642033322897053}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2883654815081506176, guid: a18cfd44ebc772f4f8f3b02e81bd316e, type: 3}
+--- !u!114 &4800882226684902766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045642033322897053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: SSD 1
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &9101374185871600285
 GameObject:
   m_ObjectHideFlags: 0
@@ -10952,6 +12579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5108951362325690333}
+  - component: {fileID: 9163655700581476620}
   m_Layer: 0
   m_Name: ram_41
   m_TagString: Untagged
@@ -10976,6 +12604,28 @@ Transform:
   - {fileID: 4671485162454241022}
   m_Father: {fileID: 6884093132858393542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9163655700581476620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101466839845358544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
+  componentName: RAM
+  manager: {fileID: 0}
+  moveDistance: 1.5
+  moveDuration: 0.5
+  fadeOnRemoval: 1
+  fadeDuration: 0.4
+  useCustomMovement: 0
+  customRightDistance: 1.5
+  customUpDistance: 1
+  additionalObjects: []
 --- !u!1 &9218406456636760562
 GameObject:
   m_ObjectHideFlags: 0

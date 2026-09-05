@@ -7,7 +7,9 @@ public class DisassemblyInventory : MonoBehaviour
     public class InventoryItem
     {
         public string componentName;
+        public Sprite componentIcon;
         public TMP_Text statusText;
+        public InventorySlot inventorySlot;
 
         [HideInInspector]
         public bool completed;
@@ -25,10 +27,6 @@ public class DisassemblyInventory : MonoBehaviour
         ResetInventory();
     }
 
-    // =========================================================
-    // RESET INVENTORY
-    // =========================================================
-
     public void ResetInventory()
     {
         if (items == null)
@@ -40,13 +38,13 @@ public class DisassemblyInventory : MonoBehaviour
                 continue;
 
             item.completed = false;
+
+            if (item.inventorySlot != null)
+                item.inventorySlot.gameObject.SetActive(false);
+
             UpdateItem(item);
         }
     }
-
-    // =========================================================
-    // MARK COMPONENT AS REMOVED
-    // =========================================================
 
     public void MarkRemoved(string componentName)
     {
@@ -70,6 +68,18 @@ public class DisassemblyInventory : MonoBehaviour
 
                 UpdateItem(item);
 
+                // SHOW INVENTORY PICTURE
+                if (item.inventorySlot != null)
+                {
+                    item.inventorySlot.gameObject.SetActive(true);
+
+                    item.inventorySlot.Setup(
+                        item.componentName,
+                        item.componentIcon,
+                        this
+                    );
+                }
+
                 Debug.Log(
                     "INVENTORY UPDATED: " +
                     componentName +
@@ -86,10 +96,6 @@ public class DisassemblyInventory : MonoBehaviour
         );
     }
 
-    // =========================================================
-    // UPDATE ITEM DISPLAY
-    // =========================================================
-
     private void UpdateItem(InventoryItem item)
     {
         if (item.statusText == null)
@@ -104,5 +110,16 @@ public class DisassemblyInventory : MonoBehaviour
             symbol +
             " " +
             item.componentName;
+    }
+
+    public void SelectItem(string componentName)
+    {
+        if (string.IsNullOrWhiteSpace(componentName))
+            return;
+
+        Debug.Log(
+            "INVENTORY ITEM SELECTED: " +
+            componentName
+        );
     }
 }
