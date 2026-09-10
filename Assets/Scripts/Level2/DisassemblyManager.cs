@@ -54,6 +54,7 @@ public class DisassemblyManager : MonoBehaviour
     private int mistakeClicks = 0;
 
     private bool disassemblyComplete = false;
+    private bool gameplayStarted = false;
 
     private bool psuCablesComplete = false;
     private bool ssd1CableComplete = false;
@@ -66,6 +67,8 @@ public class DisassemblyManager : MonoBehaviour
 
     private void Start()
     {
+        gameplayStarted = false;
+
         if (resultsPanel != null)
             resultsPanel.SetActive(false);
 
@@ -299,9 +302,19 @@ public class DisassemblyManager : MonoBehaviour
         return false;
     }
 
+    public void StartGameplay()
+    {
+        gameplayStarted = true;
+
+        Debug.Log("GAMEPLAY STARTED!");
+    }
+
     public void ComponentClicked(
      DisassemblyComponent component)
     {
+        if (!gameplayStarted)
+            return;
+
         if (disassemblyComplete)
             return;
 
@@ -408,6 +421,9 @@ public class DisassemblyManager : MonoBehaviour
     public void CableClicked(
         DisassemblyCable cable)
     {
+        if (!gameplayStarted)
+            return;
+
         if (disassemblyComplete)
             return;
 

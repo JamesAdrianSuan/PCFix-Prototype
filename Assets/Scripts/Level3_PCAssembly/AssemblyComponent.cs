@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -264,11 +265,20 @@ public class AssemblyComponent : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         HandleClick();
     }
 
     public void HandleClick()
     {
+        if (LevelPauseController.IsPaused)
+            return;
+
         if (!interactable ||
             isAssembling ||
             isAssembled)
@@ -296,10 +306,6 @@ public class AssemblyComponent : MonoBehaviour
 
         manager.ComponentClicked(this);
     }
-
-    // =========================================================
-    // ASSEMBLE
-    // =========================================================
 
     public void Assemble()
     {
@@ -582,6 +588,9 @@ public class AssemblyChildClickForwarder :
 
     private void OnMouseDown()
     {
+        if (LevelPauseController.IsPaused)
+            return;
+
         if (parentComponent != null)
         {
             parentComponent.HandleClick();
