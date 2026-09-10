@@ -581,4 +581,12 @@ public class AssemblyManager : MonoBehaviour
             currentScene.buildIndex
         );
     }
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1f;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            "Main Menu"
+        );
+    }
 }

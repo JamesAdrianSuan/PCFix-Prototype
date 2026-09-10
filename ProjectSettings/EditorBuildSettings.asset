@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu/Main Menu.unity
     guid: 3789fd32d4d52d14caf00a754d8c44db
   - enabled: 1
-    path: Assets/Scenes/Level2_PCDisassembly/SampleScene.unity
+    path: Assets/Scenes/Level2_PCDisassembly/Level1PCDisassembly.unity
     guid: beee59a3112d4214eb07407d68f94b75
-  - enabled: 0
-    path: Assets/Scenes/Level3_PCAssembly/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Level3PCAssembly/Level2PCAssembly.unity
+    guid: 5167a2c486d282248982a0f2b3c2afdc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

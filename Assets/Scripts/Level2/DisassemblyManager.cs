@@ -1,7 +1,9 @@
-using UnityEngine;
-using TMPro;
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DisassemblyManager : MonoBehaviour
@@ -16,6 +18,7 @@ public class DisassemblyManager : MonoBehaviour
     [Header("UI")]
     public TMP_Text instructionText;
     public TMP_Text progressText;
+    public GameObject instructionsPanel;
 
     [Header("Wrong Click Feedback")]
     public GameObject wrongClickFeedback;
@@ -71,6 +74,9 @@ public class DisassemblyManager : MonoBehaviour
 
         if (resultsPanel != null)
             resultsPanel.SetActive(false);
+
+        if (instructionsPanel != null)
+            instructionsPanel.SetActive(true);
 
         HideWrongFeedback();
 
@@ -306,11 +312,14 @@ public class DisassemblyManager : MonoBehaviour
     {
         gameplayStarted = true;
 
+        if (instructionsPanel != null)
+            instructionsPanel.SetActive(false);
+
         Debug.Log("GAMEPLAY STARTED!");
     }
 
     public void ComponentClicked(
-     DisassemblyComponent component)
+        DisassemblyComponent component)
     {
         if (!gameplayStarted)
             return;
@@ -597,7 +606,6 @@ public class DisassemblyManager : MonoBehaviour
             }
         }
 
-        // 👇 DITO ilagay ang inventory code
         if (inventory != null)
         {
             Debug.Log(
@@ -810,7 +818,7 @@ public class DisassemblyManager : MonoBehaviour
         }
 
         HideWrongFeedback();
-        // Hide instruction and progress text
+
         if (instructionText != null)
             instructionText.gameObject.SetActive(false);
 
@@ -921,5 +929,12 @@ public class DisassemblyManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager
             .LoadScene(currentScene.name);
     }
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            "Level2PCAssembly"
+        );
+    }
 }
