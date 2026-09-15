@@ -2956,7 +2956,7 @@ MonoBehaviour:
   musicSource: {fileID: 1573221754}
   SFXSource: {fileID: 496337390}
   background: {fileID: 8300000, guid: c7cf57e5e456ccc4482c6caa02718ec2, type: 3}
-  Game: {fileID: 0}
+  Game: {fileID: 8300000, guid: c7cf57e5e456ccc4482c6caa02718ec2, type: 3}
 --- !u!4 &428849658
 Transform:
   m_ObjectHideFlags: 0
@@ -4940,7 +4940,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638166628}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: bd40c85804a374e42af76f94c4cac646, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4950,7 +4950,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -4958,7 +4958,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://jamesadriansuan.github.io/PCFixGame/0910.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -15543,7 +15543,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913183630}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: d535500411ddbd648ba5a65699f0b779, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -15553,7 +15553,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -15561,7 +15561,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://jamesadriansuan.github.io/PCFixGame/0912.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
