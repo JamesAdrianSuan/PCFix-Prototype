@@ -2218,7 +2218,7 @@ MonoBehaviour:
     - {fileID: 767983473}
     - {fileID: 1942308203}
     - {fileID: 2101367804}
-    useManualTransform: 1
+    useManualTransform: 0
     manualWorldPosition: {x: 3.79, y: 8.61, z: 0.05}
     manualWorldRotation: {x: 0, y: 0, z: 0}
     manualLocalScale: {x: 1.628663, y: 0.9897038, z: 1.734079}
