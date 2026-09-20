@@ -4,17 +4,20 @@ using TMPro;
 public class TimeTrialTimer : MonoBehaviour
 {
     [Header("Timer")]
-    public float timeLimit = 60f;
+    public bool timerRunning = false;
 
     [Header("UI")]
     public TMP_Text timerText;
 
-    private float currentTime;
-    private bool timerRunning = false;
+    private float elapsedTime = 0f;
+
+    public float ElapsedTime => elapsedTime;
+    public bool TimerRunning => timerRunning;
 
     private void Start()
     {
-        currentTime = timeLimit;
+        elapsedTime = 0f;
+        timerRunning = false;
         UpdateTimerDisplay();
     }
 
@@ -23,25 +26,13 @@ public class TimeTrialTimer : MonoBehaviour
         if (!timerRunning)
             return;
 
-        currentTime -= Time.deltaTime;
-
-        if (currentTime <= 0f)
-        {
-            currentTime = 0f;
-            timerRunning = false;
-
-            UpdateTimerDisplay();
-
-            Debug.Log("TIME TRIAL FAILED!");
-            return;
-        }
-
+        elapsedTime += Time.deltaTime;
         UpdateTimerDisplay();
     }
 
     public void StartTimer()
     {
-        currentTime = timeLimit;
+        elapsedTime = 0f;
         timerRunning = true;
 
         Debug.Log("TIME TRIAL STARTED!");
@@ -52,17 +43,34 @@ public class TimeTrialTimer : MonoBehaviour
         timerRunning = false;
 
         Debug.Log(
-            "TIME TRIAL STOPPED! Time: " +
-            currentTime.ToString("F1")
+            "TIME TRIAL COMPLETED! Time: " +
+            FormatTime()
         );
     }
 
     public void ResetTimer()
     {
-        currentTime = timeLimit;
+        elapsedTime = 0f;
         timerRunning = false;
 
         UpdateTimerDisplay();
+    }
+
+    public string GetFormattedTime()
+    {
+        return FormatTime();
+    }
+
+    private string FormatTime()
+    {
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+
+        return string.Format(
+            "{0:00}:{1:00}",
+            minutes,
+            seconds
+        );
     }
 
     private void UpdateTimerDisplay()
@@ -70,19 +78,6 @@ public class TimeTrialTimer : MonoBehaviour
         if (timerText == null)
             return;
 
-        int minutes = Mathf.FloorToInt(
-            currentTime / 60f
-        );
-
-        int seconds = Mathf.FloorToInt(
-            currentTime % 60f
-        );
-
-        timerText.text =
-            string.Format(
-                "{0:00}:{1:00}",
-                minutes,
-                seconds
-            );
+        timerText.text = FormatTime();
     }
 }

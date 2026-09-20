@@ -38,6 +38,9 @@ public class AssemblyManager : MonoBehaviour
     public TMP_Text finalCorrectText;
     public TMP_Text finalXPText;
 
+    [Header("Level 3 Time Trial")]
+    public bool timeTrialMode = false;
+
     private int currentStep = 0;
 
     private int correctCount = 0;
@@ -434,7 +437,10 @@ public class AssemblyManager : MonoBehaviour
             "=== ALL ASSEMBLY STEPS COMPLETE ==="
         );
 
-        ShowResultsPanel();
+        if (!timeTrialMode)
+        {
+            ShowResultsPanel();
+        }
     }
 
     // =========================================================
@@ -588,5 +594,22 @@ public class AssemblyManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             "Main Menu"
         );
+    }
+    public int GetCorrectCount()
+    {
+        return correctCount;
+    }
+
+    public int GetMistakeCount()
+    {
+        return mistakeCount;
+    }
+
+    public bool IsAssemblyComplete()
+    {
+        if (components == null)
+            return false;
+
+        return currentStep >= components.Length;
     }
 }

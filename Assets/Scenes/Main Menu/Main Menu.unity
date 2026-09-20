@@ -6673,7 +6673,7 @@ MonoBehaviour:
   musicSource: {fileID: 1573221754}
   SFXSource: {fileID: 496337390}
   background: {fileID: 8300000, guid: c7cf57e5e456ccc4482c6caa02718ec2, type: 3}
-  Game: {fileID: 0}
+  Game: {fileID: 8300000, guid: c7cf57e5e456ccc4482c6caa02718ec2, type: 3}
 --- !u!4 &428849658
 Transform:
   m_ObjectHideFlags: 0

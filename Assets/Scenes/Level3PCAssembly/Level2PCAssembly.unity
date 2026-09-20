@@ -4065,6 +4065,7 @@ MonoBehaviour:
   retryButton: {fileID: 70453151}
   finalCorrectText: {fileID: 66809967}
   finalXPText: {fileID: 526946402}
+  timeTrialMode: 0
 --- !u!4 &625146222
 Transform:
   m_ObjectHideFlags: 0
@@ -8707,6 +8708,7 @@ MonoBehaviour:
   finalMistakesText: {fileID: 1749155086}
   finalAccuracyText: {fileID: 1302201050}
   retryButton: {fileID: 70453151}
+  timeTrialMode: 0
   inventory: {fileID: 1127999607}
   components:
   - componentName: Power Supply
@@ -9386,7 +9388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e9dd83f8ac78bd409775244572cf82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeTrialTimer
-  timeLimit: 60
+  timerRunning: 0
   timerText: {fileID: 2017228657}
 --- !u!1 &1589941748
 GameObject:
@@ -11459,8 +11461,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PAUSE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3012bb4ef78d7114d877ea210c3ab548, type: 2}
+  m_sharedMaterial: {fileID: 1167897392623238461, guid: 3012bb4ef78d7114d877ea210c3ab548, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

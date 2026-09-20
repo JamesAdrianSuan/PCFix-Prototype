@@ -35,6 +35,12 @@ public class AssemblyComponent : MonoBehaviour
     [Tooltip("Snap position exactly to the saved assembly position.")]
     public bool snapPosition = true;
 
+    [Header("Level 3 Support")]
+    public Level3AssemblyVisualController level3VisualController;
+
+    public bool useLevel3SavedTransform = false;
+
+
     // =========================================================
     // RUNTIME
     // =========================================================
@@ -45,20 +51,15 @@ public class AssemblyComponent : MonoBehaviour
     private bool isAssembling = false;
     private bool isAssembled = false;
 
-    // Saved original transform.
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private Vector3 originalScale;
 
-    // Saved additional-object transforms.
     private Vector3[] originalAdditionalPositions;
     private Quaternion[] originalAdditionalRotations;
     private Vector3[] originalAdditionalScales;
 
-    // Cached colliders.
     private Collider[] cachedColliders;
-
-    // Cached renderers.
     private Renderer[] cachedRenderers;
 
     private readonly List<Collider> cachedAdditionalColliders =
@@ -66,6 +67,7 @@ public class AssemblyComponent : MonoBehaviour
 
     private readonly List<Renderer> cachedAdditionalRenderers =
         new List<Renderer>();
+
 
     // =========================================================
     // AWAKE
@@ -76,20 +78,14 @@ public class AssemblyComponent : MonoBehaviour
         SaveOriginalTransforms();
         CacheComponents();
         SetupChildClickForwarders();
-
-        // Assembly starts from the position currently
-        // saved in the scene.
-        //
-        // We will later add an optional "starting position"
-        // system if you want the parts to begin outside the PC.
     }
+
 
     // =========================================================
     // SETUP
     // =========================================================
 
-    public void Setup(
-        AssemblyManager assemblyManager)
+    public void Setup(AssemblyManager assemblyManager)
     {
         manager = assemblyManager;
 
@@ -101,20 +97,16 @@ public class AssemblyComponent : MonoBehaviour
         SetupChildClickForwarders();
     }
 
+
     // =========================================================
     // SAVE ORIGINAL TRANSFORMS
     // =========================================================
 
     private void SaveOriginalTransforms()
     {
-        originalPosition =
-            transform.position;
-
-        originalRotation =
-            transform.rotation;
-
-        originalScale =
-            transform.localScale;
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+        originalScale = transform.localScale;
 
         int count =
             additionalObjects != null
@@ -135,19 +127,14 @@ public class AssemblyComponent : MonoBehaviour
             if (additionalObjects[i] == null)
                 continue;
 
-            Transform t =
-                additionalObjects[i].transform;
+            Transform t = additionalObjects[i].transform;
 
-            originalAdditionalPositions[i] =
-                t.position;
-
-            originalAdditionalRotations[i] =
-                t.rotation;
-
-            originalAdditionalScales[i] =
-                t.localScale;
+            originalAdditionalPositions[i] = t.position;
+            originalAdditionalRotations[i] = t.rotation;
+            originalAdditionalScales[i] = t.localScale;
         }
     }
+
 
     // =========================================================
     // CACHE COMPONENTS
@@ -198,6 +185,7 @@ public class AssemblyComponent : MonoBehaviour
         }
     }
 
+
     // =========================================================
     // CHILD CLICK FORWARDERS
     // =========================================================
@@ -212,7 +200,6 @@ public class AssemblyComponent : MonoBehaviour
             if (col == null)
                 continue;
 
-            // Collider belongs directly to this object.
             if (col.gameObject == gameObject)
                 continue;
 
@@ -229,6 +216,7 @@ public class AssemblyComponent : MonoBehaviour
             forwarder.SetParentComponent(this);
         }
     }
+
 
     // =========================================================
     // INTERACTION
@@ -249,8 +237,7 @@ public class AssemblyComponent : MonoBehaviour
             }
         }
 
-        foreach (Collider col
-            in cachedAdditionalColliders)
+        foreach (Collider col in cachedAdditionalColliders)
         {
             if (col != null)
             {
@@ -258,6 +245,7 @@ public class AssemblyComponent : MonoBehaviour
             }
         }
     }
+
 
     // =========================================================
     // CLICK
@@ -274,6 +262,7 @@ public class AssemblyComponent : MonoBehaviour
         HandleClick();
     }
 
+
     public void HandleClick()
     {
         if (LevelPauseController.IsPaused)
@@ -289,8 +278,7 @@ public class AssemblyComponent : MonoBehaviour
         if (manager == null)
         {
             Debug.LogError(
-                "AssemblyComponent has NO " +
-                "AssemblyManager: " +
+                "AssemblyComponent has NO AssemblyManager: " +
                 gameObject.name
             );
 
@@ -307,6 +295,11 @@ public class AssemblyComponent : MonoBehaviour
         manager.ComponentClicked(this);
     }
 
+
+    // =========================================================
+    // ASSEMBLE
+    // =========================================================
+
     public void Assemble()
     {
         if (isAssembling ||
@@ -318,6 +311,7 @@ public class AssemblyComponent : MonoBehaviour
         StartCoroutine(AssemblyRoutine());
     }
 
+
     // =========================================================
     // ASSEMBLY ROUTINE
     // =========================================================
@@ -328,74 +322,144 @@ public class AssemblyComponent : MonoBehaviour
 
         SetInteractable(false);
 
+
         // -----------------------------------------------------
-        // FINAL POSITION
+        // FINAL TRANSFORM
         // -----------------------------------------------------
 
-        Vector3 finalPosition =
-            originalPosition;
+        Vector3 finalPosition = originalPosition;
+        Quaternion finalRotation = originalRotation;
+        Vector3 finalScale = originalScale;
 
-        Quaternion finalRotation =
-            originalRotation;
+
+        // -----------------------------------------------------
+        // LEVEL 3 SAVED TRANSFORM
+        // -----------------------------------------------------
+
+        bool usingLevel3Transform =
+            useLevel3SavedTransform &&
+            level3VisualController != null;
+
+        if (usingLevel3Transform)
+        {
+            bool found =
+                level3VisualController.TryGetOriginalTransform(
+                    componentName,
+                    out Vector3 savedPosition,
+                    out Quaternion savedRotation,
+                    out Vector3 savedScale
+                );
+
+            if (found)
+            {
+                finalPosition = savedPosition;
+                finalRotation = savedRotation;
+                finalScale = savedScale;
+
+                Debug.Log(
+                    "LEVEL 3 ASSEMBLY TARGET | " +
+                    componentName +
+                    " | Position=" +
+                    finalPosition +
+                    " | Rotation=" +
+                    finalRotation +
+                    " | Scale=" +
+                    finalScale
+                );
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "LEVEL 3 TRANSFORM NOT FOUND | " +
+                    componentName +
+                    " | Using AssemblyComponent original transform."
+                );
+            }
+        }
+
 
         // -----------------------------------------------------
         // START POSITION
-        //
-        // The component begins slightly away from its
-        // original position.
         // -----------------------------------------------------
 
-        Vector3 startOffset;
+        Vector3 startPosition;
 
-        Camera cam =
-            Camera.main;
+        Camera cam = Camera.main;
 
-        if (useCameraPerspective &&
-            cam != null)
+
+        if (usingLevel3Transform)
         {
-            startOffset =
-                cam.transform.right *
-                startRightOffset;
+            // IMPORTANT:
+            // Level 3 starts from the CURRENT detached position.
+            // It will smoothly animate toward the saved original
+            // assembly position.
 
-            startOffset +=
-                cam.transform.up *
-                startUpOffset;
+            startPosition = transform.position;
+
+            Debug.Log(
+                "LEVEL 3 ASSEMBLY START | " +
+                componentName +
+                " | CurrentPosition=" +
+                startPosition +
+                " | FinalPosition=" +
+                finalPosition
+            );
         }
         else
         {
-            startOffset =
-                Vector3.right *
-                startRightOffset;
+            // -------------------------------------------------
+            // LEVEL 2 / NORMAL BEHAVIOR
+            // -------------------------------------------------
 
-            startOffset +=
-                Vector3.up *
-                startUpOffset;
+            Vector3 startOffset;
+
+            if (useCameraPerspective &&
+                cam != null)
+            {
+                startOffset =
+                    cam.transform.right *
+                    startRightOffset;
+
+                startOffset +=
+                    cam.transform.up *
+                    startUpOffset;
+            }
+            else
+            {
+                startOffset =
+                    Vector3.right *
+                    startRightOffset;
+
+                startOffset +=
+                    Vector3.up *
+                    startUpOffset;
+            }
+
+            Vector3 direction;
+
+            if (cam != null)
+            {
+                direction =
+                    -cam.transform.forward *
+                    startingDistance;
+            }
+            else
+            {
+                direction =
+                    Vector3.forward *
+                    startingDistance;
+            }
+
+            startOffset += direction;
+
+            startPosition =
+                finalPosition +
+                startOffset;
         }
 
-        // Add a little depth separation.
-        Vector3 direction;
-
-        if (cam != null)
-        {
-            direction =
-                -cam.transform.forward *
-                startingDistance;
-        }
-        else
-        {
-            direction =
-                Vector3.forward *
-                startingDistance;
-        }
-
-        startOffset += direction;
-
-        Vector3 startPosition =
-            finalPosition +
-            startOffset;
 
         // -----------------------------------------------------
-        // ADDITIONAL OBJECT START POSITIONS
+        // ADDITIONAL OBJECTS
         // -----------------------------------------------------
 
         int objectCount =
@@ -406,15 +470,73 @@ public class AssemblyComponent : MonoBehaviour
         Vector3[] startAdditionalPositions =
             new Vector3[objectCount];
 
-        for (int i = 0; i < objectCount; i++)
-        {
-            if (additionalObjects[i] == null)
-                continue;
+        bool additionalObjectsAreChildren =
+            usingLevel3Transform &&
+            AreAdditionalObjectsChildren();
 
-            startAdditionalPositions[i] =
-                originalAdditionalPositions[i] +
-                startOffset;
+
+        if (!additionalObjectsAreChildren)
+        {
+            for (int i = 0; i < objectCount; i++)
+            {
+                if (additionalObjects[i] == null)
+                    continue;
+
+                if (usingLevel3Transform)
+                {
+                    startAdditionalPositions[i] =
+                        additionalObjects[i].transform.position;
+                }
+                else
+                {
+                    Vector3 startOffset;
+
+                    if (useCameraPerspective &&
+                        cam != null)
+                    {
+                        startOffset =
+                            cam.transform.right *
+                            startRightOffset;
+
+                        startOffset +=
+                            cam.transform.up *
+                            startUpOffset;
+                    }
+                    else
+                    {
+                        startOffset =
+                            Vector3.right *
+                            startRightOffset;
+
+                        startOffset +=
+                            Vector3.up *
+                            startUpOffset;
+                    }
+
+                    Vector3 direction;
+
+                    if (cam != null)
+                    {
+                        direction =
+                            -cam.transform.forward *
+                            startingDistance;
+                    }
+                    else
+                    {
+                        direction =
+                            Vector3.forward *
+                            startingDistance;
+                    }
+
+                    startOffset += direction;
+
+                    startAdditionalPositions[i] =
+                        originalAdditionalPositions[i] +
+                        startOffset;
+                }
+            }
         }
+
 
         // -----------------------------------------------------
         // SET INITIAL STATE
@@ -423,31 +545,47 @@ public class AssemblyComponent : MonoBehaviour
         transform.position =
             startPosition;
 
-        if (snapRotation)
+
+        // -----------------------------------------------------
+        // ROTATION
+        // -----------------------------------------------------
+
+        if (!usingLevel3Transform &&
+            snapRotation)
         {
             transform.rotation =
                 finalRotation;
         }
 
-        for (int i = 0; i < objectCount; i++)
+
+        // -----------------------------------------------------
+        // ADDITIONAL INITIAL STATE
+        // -----------------------------------------------------
+
+        if (!additionalObjectsAreChildren)
         {
-            if (additionalObjects[i] == null)
-                continue;
-
-            additionalObjects[i]
-                .transform.position =
-                startAdditionalPositions[i];
-
-            if (snapRotation)
+            for (int i = 0; i < objectCount; i++)
             {
+                if (additionalObjects[i] == null)
+                    continue;
+
                 additionalObjects[i]
-                    .transform.rotation =
-                    originalAdditionalRotations[i];
+                    .transform.position =
+                    startAdditionalPositions[i];
+
+                if (!usingLevel3Transform &&
+                    snapRotation)
+                {
+                    additionalObjects[i]
+                        .transform.rotation =
+                        originalAdditionalRotations[i];
+                }
             }
         }
 
+
         // -----------------------------------------------------
-        // ANIMATE
+        // ANIMATION
         // -----------------------------------------------------
 
         float elapsed = 0f;
@@ -469,13 +607,22 @@ public class AssemblyComponent : MonoBehaviour
                     t
                 );
 
-            // Main component.
+
+            // -------------------------------------------------
+            // MAIN COMPONENT POSITION
+            // -------------------------------------------------
+
             transform.position =
                 Vector3.Lerp(
                     startPosition,
                     finalPosition,
                     t
                 );
+
+
+            // -------------------------------------------------
+            // MAIN COMPONENT ROTATION
+            // -------------------------------------------------
 
             if (snapRotation)
             {
@@ -487,35 +634,43 @@ public class AssemblyComponent : MonoBehaviour
                     );
             }
 
-            // Additional objects.
-            for (int i = 0; i < objectCount; i++)
+
+            // -------------------------------------------------
+            // ADDITIONAL OBJECTS
+            // -------------------------------------------------
+
+            if (!additionalObjectsAreChildren)
             {
-                if (additionalObjects[i] == null)
-                    continue;
-
-                additionalObjects[i]
-                    .transform.position =
-                    Vector3.Lerp(
-                        startAdditionalPositions[i],
-                        originalAdditionalPositions[i],
-                        t
-                    );
-
-                if (snapRotation)
+                for (int i = 0; i < objectCount; i++)
                 {
+                    if (additionalObjects[i] == null)
+                        continue;
+
                     additionalObjects[i]
-                        .transform.rotation =
-                        Quaternion.Slerp(
-                            additionalObjects[i]
-                                .transform.rotation,
-                            originalAdditionalRotations[i],
+                        .transform.position =
+                        Vector3.Lerp(
+                            startAdditionalPositions[i],
+                            originalAdditionalPositions[i],
                             t
                         );
+
+                    if (snapRotation)
+                    {
+                        additionalObjects[i]
+                            .transform.rotation =
+                            Quaternion.Slerp(
+                                additionalObjects[i]
+                                    .transform.rotation,
+                                originalAdditionalRotations[i],
+                                t
+                            );
+                    }
                 }
             }
 
             yield return null;
         }
+
 
         // -----------------------------------------------------
         // FINAL SNAP
@@ -533,34 +688,107 @@ public class AssemblyComponent : MonoBehaviour
                 finalRotation;
         }
 
-        for (int i = 0; i < objectCount; i++)
+
+        // -----------------------------------------------------
+        // ADDITIONAL FINAL SNAP
+        // -----------------------------------------------------
+
+        if (!additionalObjectsAreChildren)
         {
-            if (additionalObjects[i] == null)
-                continue;
-
-            if (snapPosition)
+            for (int i = 0; i < objectCount; i++)
             {
-                additionalObjects[i]
-                    .transform.position =
-                    originalAdditionalPositions[i];
-            }
+                if (additionalObjects[i] == null)
+                    continue;
 
-            if (snapRotation)
-            {
-                additionalObjects[i]
-                    .transform.rotation =
-                    originalAdditionalRotations[i];
-            }
+                if (snapPosition)
+                {
+                    additionalObjects[i]
+                        .transform.position =
+                        originalAdditionalPositions[i];
+                }
 
-            additionalObjects[i]
-                .transform.localScale =
-                originalAdditionalScales[i];
+                if (snapRotation)
+                {
+                    additionalObjects[i]
+                        .transform.rotation =
+                        originalAdditionalRotations[i];
+                }
+
+                additionalObjects[i]
+                    .transform.localScale =
+                    originalAdditionalScales[i];
+            }
         }
 
+
+        // -----------------------------------------------------
+        // FINAL SCALE
+        // -----------------------------------------------------
+
         transform.localScale =
-            originalScale;
+            finalScale;
+
+
+        // -----------------------------------------------------
+        // LEVEL 3 PSU CHILD TRANSFORMS
+        // -----------------------------------------------------
+
+        RestoreLevel3PowerSupplyChildTransforms();
+
+
+        // -----------------------------------------------------
+        // FINAL DIAGNOSTIC
+        // -----------------------------------------------------
+
+        if (usingLevel3Transform)
+        {
+            Debug.Log(
+                "===== FINAL LEVEL 3 TRANSFORM AFTER ASSEMBLY ====="
+            );
+
+            Debug.Log(
+                "COMPONENT: " +
+                componentName
+            );
+
+            Debug.Log(
+                "ROOT NAME: " +
+                gameObject.name
+            );
+
+            Debug.Log(
+                "FINAL POSITION: " +
+                transform.position
+            );
+
+            Debug.Log(
+                "FINAL ROTATION: " +
+                transform.rotation.eulerAngles
+            );
+
+            Debug.Log(
+                "FINAL LOCAL SCALE: " +
+                transform.localScale
+            );
+
+            Debug.Log(
+                "FINAL ACTIVE SELF: " +
+                gameObject.activeSelf
+            );
+
+            Debug.Log(
+                "FINAL ACTIVE HIERARCHY: " +
+                gameObject.activeInHierarchy
+            );
+        }
+
+
+        // -----------------------------------------------------
+        // COMPLETE
+        // -----------------------------------------------------
 
         isAssembled = true;
+
         isAssembling = false;
 
         Debug.Log(
@@ -568,32 +796,182 @@ public class AssemblyComponent : MonoBehaviour
             componentName
         );
     }
-}
 
 
-// =============================================================
-// CHILD CLICK FORWARDER
-// =============================================================
+    // =========================================================
+    // LEVEL 3 PSU CHILD TRANSFORMS
+    // =========================================================
 
-public class AssemblyChildClickForwarder :
-    MonoBehaviour
-{
-    private AssemblyComponent parentComponent;
-
-    public void SetParentComponent(
-        AssemblyComponent component)
+    private void RestoreLevel3PowerSupplyChildTransforms()
     {
-        parentComponent = component;
-    }
-
-    private void OnMouseDown()
-    {
-        if (LevelPauseController.IsPaused)
+        if (!useLevel3SavedTransform)
             return;
 
-        if (parentComponent != null)
+        if (!componentName.Trim().Equals(
+            "Power Supply",
+            System.StringComparison.OrdinalIgnoreCase))
         {
-            parentComponent.HandleClick();
+            return;
+        }
+
+
+        Transform object4 =
+            transform.Find("Object_4");
+
+        if (object4 != null)
+        {
+            object4.localPosition =
+                Vector3.zero;
+
+            object4.localRotation =
+                Quaternion.identity;
+
+            object4.localScale =
+                Vector3.one;
+        }
+
+
+        Transform object5 =
+            transform.Find("Object_5");
+
+        if (object5 != null)
+        {
+            object5.localPosition =
+                Vector3.zero;
+
+            object5.localRotation =
+                Quaternion.identity;
+
+            object5.localScale =
+                Vector3.one;
+        }
+
+
+        Transform object6 =
+            transform.Find("Object_6");
+
+        if (object6 != null)
+        {
+            object6.localPosition =
+                new Vector3(
+                    -0.151f,
+                    0.02f,
+                    0f
+                );
+
+            object6.localRotation =
+                Quaternion.identity;
+
+            object6.localScale =
+                Vector3.one;
+        }
+
+
+        Transform object7 =
+            transform.Find("Object_7");
+
+        if (object7 != null)
+        {
+            object7.localPosition =
+                Vector3.zero;
+
+            object7.localRotation =
+                Quaternion.identity;
+
+            object7.localScale =
+                Vector3.one;
+        }
+
+
+        Transform object8 =
+            transform.Find("Object_8");
+
+        if (object8 != null)
+        {
+            object8.localPosition =
+                Vector3.zero;
+
+            object8.localRotation =
+                Quaternion.identity;
+
+            object8.localScale =
+                Vector3.one;
+        }
+
+
+        Transform object9 =
+            transform.Find("Object_9");
+
+        if (object9 != null)
+        {
+            object9.localPosition =
+                Vector3.zero;
+
+            object9.localRotation =
+                Quaternion.identity;
+
+            object9.localScale =
+                Vector3.one;
+        }
+
+
+        Debug.Log(
+            "LEVEL 3 PSU CHILD TRANSFORMS RESTORED"
+        );
+    }
+
+
+    // =========================================================
+    // CHECK LEVEL 3 CHILDREN
+    // =========================================================
+
+    private bool AreAdditionalObjectsChildren()
+    {
+        if (additionalObjects == null ||
+            additionalObjects.Length == 0)
+        {
+            return false;
+        }
+
+        foreach (GameObject obj in additionalObjects)
+        {
+            if (obj == null)
+                continue;
+
+            if (obj.transform.parent != transform)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    // =========================================================
+    // CHILD CLICK FORWARDER
+    // =========================================================
+
+    public class AssemblyChildClickForwarder :
+        MonoBehaviour
+    {
+        private AssemblyComponent parentComponent;
+
+        public void SetParentComponent(
+            AssemblyComponent component)
+        {
+            parentComponent = component;
+        }
+
+        private void OnMouseDown()
+        {
+            if (LevelPauseController.IsPaused)
+                return;
+
+            if (parentComponent != null)
+            {
+                parentComponent.HandleClick();
+            }
         }
     }
 }

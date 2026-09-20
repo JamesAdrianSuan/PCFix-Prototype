@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -36,6 +35,9 @@ public class DisassemblyManager : MonoBehaviour
     public TMP_Text finalMistakesText;
     public TMP_Text finalAccuracyText;
     public Button retryButton;
+
+    [Header("Level 3 Time Trial")]
+    public bool timeTrialMode = false;
 
     [Header("Inventory")]
     public DisassemblyInventory inventory;
@@ -826,6 +828,10 @@ public class DisassemblyManager : MonoBehaviour
             progressText.gameObject.SetActive(false);
 
         ShowResultsPanel();
+        if (!timeTrialMode)
+        {
+            ShowResultsPanel();
+        }
     }
 
     private void ShowResultsPanel()
@@ -936,5 +942,19 @@ public class DisassemblyManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             "Level2PCAssembly"
         );
+    }
+    public int GetCorrectClicks()
+    {
+        return correctClicks;
+    }
+
+    public int GetMistakeClicks()
+    {
+        return mistakeClicks;
+    }
+
+    public bool IsDisassemblyComplete()
+    {
+        return disassemblyComplete;
     }
 }
