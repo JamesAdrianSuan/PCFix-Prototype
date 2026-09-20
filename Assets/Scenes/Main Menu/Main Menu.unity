@@ -390,8 +390,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 6: Install CPU Cooler Fan '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -740,8 +740,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 8: Install GPU'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3002,8 +3002,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Step 1: Install Motherboard'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3711,8 +3711,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Basic Tools and Equipment
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3960,7 +3960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53, y: -52}
+  m_AnchoredPosition: {x: 53, y: 11}
   m_SizeDelta: {x: 1080, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232028673
@@ -5288,8 +5288,8 @@ MonoBehaviour:
     the correct component.\r\nComplete all required steps to finish the level.\r\nAvoid
     mistakes to achieve a higher score and accuracy."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5352,7 +5352,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -101.44324, y: 0, z: -1306.7333, w: -17.382153}
+  m_margin: {x: -101.44324, y: 0, z: -1306.7333, w: -497.65137}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6255,7 +6255,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398893807}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: d535500411ddbd648ba5a65699f0b779, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 7f9809267b8376347869b485c7174556, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -6963,8 +6963,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Basic Safety Reminders
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8668,7 +8668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -635, y: -338}
+  m_AnchoredPosition: {x: -635, y: -297}
   m_SizeDelta: {x: 1080, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592708234
@@ -9158,8 +9158,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 5: Install CPU Cooler '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9565,7 +9565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3}
+  m_AnchoredPosition: {x: 0, y: -2.999939}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &644398066
@@ -12331,8 +12331,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 9: Install Power Supply '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12868,8 +12868,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Step-by-Step Disassembly  '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13882,7 +13882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ASSEMBLY VIDEO
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -15663,8 +15663,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Parts of the System Unit & Definition '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17101,8 +17101,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Welcome to your technical training orientation! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17450,8 +17450,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Parts of the Motherboard & Definition
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17628,8 +17628,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Parts of the Motherboard & Definition
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17765,8 +17765,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Parts of the System Unit & Definition '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18285,8 +18285,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Basic Tools and Equipment
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19875,8 +19875,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Step-by-Step Assembly  '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20087,8 +20087,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 3: Install SDD 1 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20693,8 +20693,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 7: Install RAM '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20830,8 +20830,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 2: Install SDD 2 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21329,8 +21329,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'STEP 4: Install CPU '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
+  m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22319,7 +22319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DISASSEMBLY VIDEO
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -22433,7 +22433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1463, y: 11}
+  m_AnchoredPosition: {x: -1463, y: 14}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599666776
@@ -22458,8 +22458,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dear Trainee!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23606,8 +23606,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23994,8 +23994,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Parts of the Motherboard & Definition
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24657,8 +24657,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Basic Tools and Equipment
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25358,7 +25358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1899125234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27467,8 +27467,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Parts of the System Unit & Definition '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
+  m_sharedMaterial: {fileID: -3014897925172357893, guid: fff437b6b8036e44fbd6fc6aa4918d93, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
