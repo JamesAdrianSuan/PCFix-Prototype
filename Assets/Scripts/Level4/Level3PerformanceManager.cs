@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level3PerformanceManager : MonoBehaviour
 {
@@ -9,13 +9,21 @@ public class Level3PerformanceManager : MonoBehaviour
     public DisassemblyManager disassemblyManager;
     public AssemblyManager assemblyManager;
     public Level3AssemblyInitializer assemblyInitializer;
-
-    [Header("Timer")]
     public TimeTrialTimer timeTrialTimer;
 
-    [Header("Level 3 UI")]
+    [Header("Instructions")]
     public GameObject instructionsPanel;
     public Button startButton;
+
+    [Header("Level 3 Disassembly Guide UI")]
+    public GameObject disassemblyInstruction;
+    public GameObject progressText;
+
+    [Header("Assembly Target Colliders")]
+    public Level3AssemblyTargetColliderController assemblyTargetColliderController;
+
+    [Header("Assembly Visuals")]
+    public Level3AssemblyVisualController assemblyVisualController;
 
     [Header("Final Results Panel")]
     public GameObject resultsPanel;
@@ -33,12 +41,6 @@ public class Level3PerformanceManager : MonoBehaviour
     public Button retryButton;
     public Button mainMenuButton;
 
-    [Header("Assembly Target Colliders")]
-    public Level3AssemblyTargetColliderController assemblyTargetColliderController;
-
-    [Header("Assembly Visuals")]
-    public Level3AssemblyVisualController assemblyVisualController;
-
     private bool challengeStarted = false;
     private bool assemblyStarted = false;
     private bool challengeFinished = false;
@@ -49,39 +51,41 @@ public class Level3PerformanceManager : MonoBehaviour
     private int assemblyCorrect = 0;
     private int assemblyMistakes = 0;
 
+
     private void Awake()
     {
         /*
-         * Prevent AssemblyManager from starting
-         * before the Disassembly phase.
+         * Level 3 starts with Disassembly only.
          */
+
         if (assemblyManager != null)
             assemblyManager.enabled = false;
 
-        /*
-         * Prevent the Assembly Initializer from
-         * running before the Assembly phase.
-         */
         if (assemblyInitializer != null)
             assemblyInitializer.enabled = false;
 
-        /*
-         * Hide the final Level 3 Results Panel.
-         */
         if (resultsPanel != null)
             resultsPanel.SetActive(false);
+
+        /*
+         * Assembly target colliders must NOT interfere
+         * with the Disassembly phase.
+         */
+        if (assemblyTargetColliderController != null)
+            assemblyTargetColliderController.DisableAssemblyTargets();
     }
+
 
     private void Start()
     {
         /*
-         * Make sure timer starts at 00:00.
+         * Reset timer.
          */
         if (timeTrialTimer != null)
             timeTrialTimer.ResetTimer();
 
         /*
-         * Connect Start button.
+         * Start button.
          */
         if (startButton != null)
         {
@@ -92,7 +96,7 @@ public class Level3PerformanceManager : MonoBehaviour
         }
 
         /*
-         * Connect Retry button.
+         * Retry button.
          */
         if (retryButton != null)
         {
@@ -103,7 +107,7 @@ public class Level3PerformanceManager : MonoBehaviour
         }
 
         /*
-         * Connect Main Menu button.
+         * Main Menu button.
          */
         if (mainMenuButton != null)
         {
@@ -112,38 +116,40 @@ public class Level3PerformanceManager : MonoBehaviour
                 BackToMainMenu
             );
         }
-
-        Debug.Log(
-            "=== LEVEL 3 PERFORMANCE MANAGER READY ==="
-        );
     }
+
 
     private void Update()
     {
-        if (!challengeStarted ||
-            challengeFinished)
+        if (!challengeStarted)
+            return;
+
+        if (challengeFinished)
             return;
 
         /*
-         * DISASSEMBLY COMPLETE
+         * Wait for Disassembly to finish.
          */
         if (!assemblyStarted &&
             disassemblyManager != null &&
             disassemblyManager.IsDisassemblyComplete())
         {
-            HandleDisassemblyComplete();
+            CaptureDisassemblyResults();
+            StartAssemblyPhase();
         }
 
         /*
-         * ASSEMBLY COMPLETE
+         * Wait for Assembly to finish.
          */
         if (assemblyStarted &&
             assemblyManager != null &&
             assemblyManager.IsAssemblyComplete())
         {
-            HandleAssemblyComplete();
+            CaptureAssemblyResults();
+            FinishPerformanceChallenge();
         }
     }
+
 
     public void StartPerformanceChallenge()
     {
@@ -151,56 +157,48 @@ public class Level3PerformanceManager : MonoBehaviour
             return;
 
         challengeStarted = true;
-        assemblyStarted = false;
-        challengeFinished = false;
 
         Debug.Log(
-            "=== PERFORMANCE CHALLENGE STARTED ==="
+            "=== LEVEL 3 PERFORMANCE CHALLENGE STARTED ==="
         );
 
         /*
-         * Hide Level 3 introduction/instructions.
+         * Hide instruction panel.
          */
         if (instructionsPanel != null)
             instructionsPanel.SetActive(false);
 
         /*
-         * Hide final results.
+         * Hide Disassembly step-by-step guide.
+         * Level 3 is a performance challenge,
+         * so the player should not receive the
+         * normal procedural guide.
          */
-        if (resultsPanel != null)
-            resultsPanel.SetActive(false);
+        if (disassemblyInstruction != null)
+            disassemblyInstruction.SetActive(false);
+
+        if (progressText != null)
+            progressText.SetActive(false);
 
         /*
-         * Start ONE continuous timer.
+         * Start count-up timer.
          */
         if (timeTrialTimer != null)
-        {
-            timeTrialTimer.ResetTimer();
             timeTrialTimer.StartTimer();
-        }
 
         /*
-         * Start DISASSEMBLY first.
+         * Start Disassembly.
          */
         if (disassemblyManager != null)
-        {
             disassemblyManager.StartGameplay();
-
-            Debug.Log(
-                "=== DISASSEMBLY PHASE STARTED ==="
-            );
-        }
     }
 
-    private void HandleDisassemblyComplete()
-    {
-        Debug.Log(
-            "=== DISASSEMBLY PHASE COMPLETE ==="
-        );
 
-        /*
-         * Capture Disassembly results.
-         */
+    private void CaptureDisassemblyResults()
+    {
+        if (disassemblyManager == null)
+            return;
+
         disassemblyCorrect =
             GetNumberFromText(
                 disassemblyManager.finalCorrectText
@@ -212,20 +210,12 @@ public class Level3PerformanceManager : MonoBehaviour
             );
 
         Debug.Log(
-            "Disassembly Correct: " +
-            disassemblyCorrect
+            "LEVEL 3 DISASSEMBLY COMPLETE | " +
+            "Correct: " + disassemblyCorrect +
+            " | Mistakes: " + disassemblyMistakes
         );
-
-        Debug.Log(
-            "Disassembly Mistakes: " +
-            disassemblyMistakes
-        );
-
-        /*
-         * Start Assembly.
-         */
-        StartAssemblyPhase();
     }
+
 
     private void StartAssemblyPhase()
     {
@@ -238,28 +228,43 @@ public class Level3PerformanceManager : MonoBehaviour
             "=== STARTING ASSEMBLY PHASE ==="
         );
 
+        /*
+         * Enable AssemblyManager.
+         *
+         * Its normal Start() will initialize
+         * the Assembly phase.
+         */
         if (assemblyManager != null)
             assemblyManager.enabled = true;
 
+        /*
+         * Enable Assembly Initializer.
+         */
         if (assemblyInitializer != null)
             assemblyInitializer.enabled = true;
 
+        /*
+         * Enable Assembly target colliders.
+         *
+         * These were disabled during Disassembly
+         * so they cannot intercept clicks.
+         */
         if (assemblyTargetColliderController != null)
             assemblyTargetColliderController.EnableAssemblyTargets();
 
+        /*
+         * Restore Assembly visual objects.
+         */
         if (assemblyVisualController != null)
             assemblyVisualController.EnableAllAssemblyVisuals();
     }
 
-    private void HandleAssemblyComplete()
-    {
-        Debug.Log(
-            "=== ASSEMBLY PHASE COMPLETE ==="
-        );
 
-        /*
-         * Capture Assembly results.
-         */
+    private void CaptureAssemblyResults()
+    {
+        if (assemblyManager == null)
+            return;
+
         assemblyCorrect =
             GetNumberFromText(
                 assemblyManager.finalCorrectText
@@ -271,17 +276,12 @@ public class Level3PerformanceManager : MonoBehaviour
             );
 
         Debug.Log(
-            "Assembly Correct: " +
-            assemblyCorrect
+            "LEVEL 3 ASSEMBLY COMPLETE | " +
+            "Correct: " + assemblyCorrect +
+            " | Mistakes: " + assemblyMistakes
         );
-
-        Debug.Log(
-            "Assembly Mistakes: " +
-            assemblyMistakes
-        );
-
-        FinishPerformanceChallenge();
     }
+
 
     private void FinishPerformanceChallenge()
     {
@@ -291,13 +291,13 @@ public class Level3PerformanceManager : MonoBehaviour
         challengeFinished = true;
 
         /*
-         * STOP ONE CONTINUOUS TIMER.
+         * Stop timer.
          */
         if (timeTrialTimer != null)
             timeTrialTimer.StopTimer();
 
         /*
-         * COMBINE BOTH PHASES.
+         * Combined performance.
          */
         int totalCorrect =
             disassemblyCorrect +
@@ -307,124 +307,110 @@ public class Level3PerformanceManager : MonoBehaviour
             disassemblyMistakes +
             assemblyMistakes;
 
-        int totalInteractions =
+        int totalActions =
             totalCorrect +
             totalMistakes;
 
-        float accuracy =
-            totalInteractions > 0
-                ? ((float)totalCorrect /
-                   totalInteractions) * 100f
-                : 0f;
+        float accuracy = 0f;
 
-        int score =
-            Mathf.RoundToInt(accuracy);
-
-        int xp =
-            Mathf.RoundToInt(score * 1.5f);
-
-        int stars;
-
-        if (accuracy >= 90f)
-            stars = 3;
-        else if (accuracy >= 70f)
-            stars = 2;
-        else
-            stars = 1;
+        if (totalActions > 0)
+        {
+            accuracy =
+                ((float)totalCorrect /
+                totalActions) * 100f;
+        }
 
         /*
-         * SHOW FINAL LEVEL 3 RESULTS.
+         * Score.
+         *
+         * Accuracy is the main performance factor.
+         * Completion time is recorded separately.
+         */
+        int finalScore =
+            Mathf.RoundToInt(accuracy);
+
+        /*
+         * XP based on final score.
+         */
+        int finalXP = finalScore;
+
+        /*
+         * Star rating.
+         */
+        string stars;
+
+        if (accuracy >= 90f)
+        {
+            stars = "★★★";
+        }
+        else if (accuracy >= 75f)
+        {
+            stars = "★★";
+        }
+        else if (accuracy >= 60f)
+        {
+            stars = "★";
+        }
+        else
+        {
+            stars = "☆";
+        }
+
+        /*
+         * Display final results.
          */
         if (resultsPanel != null)
             resultsPanel.SetActive(true);
 
         if (resultsTitle != null)
-        {
             resultsTitle.text =
-                "PERFORMANCE CHALLENGE COMPLETE";
-        }
+                "PERFORMANCE CHALLENGE COMPLETE!";
 
         if (starText != null)
-        {
-            starText.text =
-                "Stars: " +
-                stars +
-                "/3";
-        }
+            starText.text = stars;
 
         if (performanceText != null)
-        {
-            if (accuracy >= 90f)
-            {
-                performanceText.text =
-                    "Excellent! Great job!";
-            }
-            else if (accuracy >= 70f)
-            {
-                performanceText.text =
-                    "Good job! Keep practicing!";
-            }
-            else
-            {
-                performanceText.text =
-                    "Keep practicing!";
-            }
-        }
+            performanceText.text =
+                "Combined Performance";
 
         if (finalScoreText != null)
-        {
             finalScoreText.text =
-                "Final Score: " +
-                score;
-        }
+                finalScore.ToString();
 
-        if (finalTimeText != null)
+        if (finalTimeText != null &&
+            timeTrialTimer != null)
         {
             finalTimeText.text =
-                "Completion Time: " +
                 timeTrialTimer.GetFormattedTime();
         }
 
         if (finalXPText != null)
-        {
             finalXPText.text =
-                "XP: " +
-                xp;
-        }
+                finalXP.ToString();
 
         if (finalCorrectText != null)
-        {
             finalCorrectText.text =
-                "Correct Interactions: " +
-                totalCorrect;
-        }
+                totalCorrect.ToString();
 
         if (finalMistakesText != null)
-        {
             finalMistakesText.text =
-                "Wrong Clicks: " +
-                totalMistakes;
-        }
+                totalMistakes.ToString();
 
         if (finalAccuracyText != null)
-        {
             finalAccuracyText.text =
-                "Accuracy: " +
-                accuracy.ToString("F1") +
-                "%";
-        }
+                accuracy.ToString("F1") + "%";
 
         Debug.Log(
-            "=== FINAL PERFORMANCE RESULTS ==="
+            "=== LEVEL 3 PERFORMANCE COMPLETE ==="
         );
 
         Debug.Log(
-            "Correct: " +
+            "Total Correct: " +
             totalCorrect
         );
 
         Debug.Log(
-            "Mistakes: " +
+            "Total Mistakes: " +
             totalMistakes
         );
 
@@ -435,26 +421,23 @@ public class Level3PerformanceManager : MonoBehaviour
         );
 
         Debug.Log(
-            "Score: " +
-            score
+            "Final Time: " +
+            (timeTrialTimer != null
+                ? timeTrialTimer.GetFormattedTime()
+                : "N/A")
         );
 
         Debug.Log(
-            "XP: " +
-            xp
+            "Final Score: " +
+            finalScore
         );
 
         Debug.Log(
-            "Stars: " +
-            stars +
-            "/3"
-        );
-
-        Debug.Log(
-            "Time: " +
-            timeTrialTimer.GetFormattedTime()
+            "Final XP: " +
+            finalXP
         );
     }
+
 
     private int GetNumberFromText(TMP_Text text)
     {
@@ -462,13 +445,14 @@ public class Level3PerformanceManager : MonoBehaviour
             return 0;
 
         string value = text.text;
+
         string number = "";
 
-        foreach (char c in value)
+        foreach (char character in value)
         {
-            if (char.IsDigit(c))
+            if (char.IsDigit(character))
             {
-                number += c;
+                number += character;
             }
             else if (number.Length > 0)
             {
@@ -476,29 +460,22 @@ public class Level3PerformanceManager : MonoBehaviour
             }
         }
 
-        int result;
-
-        if (int.TryParse(
-            number,
-            out result))
-        {
+        if (int.TryParse(number, out int result))
             return result;
-        }
 
         return 0;
     }
+
 
     public void RetryLevel()
     {
         Time.timeScale = 1f;
 
-        Scene currentScene =
-            SceneManager.GetActiveScene();
-
         SceneManager.LoadScene(
-            currentScene.buildIndex
+            SceneManager.GetActiveScene().name
         );
     }
+
 
     public void BackToMainMenu()
     {

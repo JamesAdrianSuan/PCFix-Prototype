@@ -1145,6 +1145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: Power Supply
   assemblyComponent: {fileID: 1593315809}
+  level3VisualController: {fileID: 258796312}
 --- !u!65 &110600882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1634,7 +1635,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207845428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -1647,9 +1648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'STEP 1
-
-    Remove the Power Supply'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2210,42 +2209,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level3AssemblyVisualController
   assemblyVisuals:
-  - componentName: CPU
-    visualObjects:
-    - {fileID: 1420506221}
-    - {fileID: 1354732559}
-  - componentName: SSD2
-    visualObjects:
-    - {fileID: 1713120854}
-    - {fileID: 1713120853}
-  - componentName: SSD1
-    visualObjects:
-    - {fileID: 1713120856}
-    - {fileID: 1713120855}
   - componentName: Power Supply
     visualObjects:
+    - {fileID: 1593315805}
     - {fileID: 1348355747}
     - {fileID: 166307048}
     - {fileID: 1984550510}
     - {fileID: 767983473}
     - {fileID: 1942308203}
     - {fileID: 2101367804}
+    useManualTransform: 1
+    manualWorldPosition: {x: 3.79, y: 8.61, z: 0.05}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1.628663, y: 0.9897038, z: 1.734079}
+  - componentName: SSD2
+    visualObjects:
+    - {fileID: 1713120854}
+    - {fileID: 1713120853}
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
+  - componentName: SSD1
+    visualObjects:
+    - {fileID: 1713120856}
+    - {fileID: 1713120855}
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
+  - componentName: CPU
+    visualObjects:
+    - {fileID: 1420506221}
+    - {fileID: 1354732559}
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
+  - componentName: 'CPU Cooler '
+    visualObjects:
+    - {fileID: 650604966}
+    - {fileID: 3437398691449592563}
+    - {fileID: 1104229879}
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
+  - componentName: CPU Cooler Fan
+    visualObjects:
+    - {fileID: 204955579}
+    - {fileID: 174005783}
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
   - componentName: GPU
     visualObjects:
     - {fileID: 1762468754}
     - {fileID: 294987740}
     - {fileID: 672637105}
     - {fileID: 750379213}
-  - componentName: CPU Cooler Fan
-    visualObjects:
-    - {fileID: 204955579}
-    - {fileID: 174005783}
-  - componentName: 'CPU Cooler '
-    visualObjects:
-    - {fileID: 650604966}
-    - {fileID: 3437398691449592563}
-    - {fileID: 1104229879}
-  restoreInterval: 0.1
+    useManualTransform: 0
+    manualWorldPosition: {x: 0, y: 0, z: 0}
+    manualWorldRotation: {x: 0, y: 0, z: 0}
+    manualLocalScale: {x: 1, y: 1, z: 1}
 --- !u!4 &258796313
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,6 +2629,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,6 +3435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: SSD 1
   assemblyComponent: {fileID: 1293178594}
+  level3VisualController: {fileID: 0}
 --- !u!65 &429239431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3515,6 +3545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: RAM
   assemblyComponent: {fileID: 324876163}
+  level3VisualController: {fileID: 0}
 --- !u!65 &482152294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3547,6 +3578,7 @@ GameObject:
   - component: {fileID: 489918859}
   - component: {fileID: 489918861}
   - component: {fileID: 489918860}
+  - component: {fileID: 489918862}
   m_Layer: 5
   m_Name: StarText
   m_TagString: Untagged
@@ -3595,8 +3627,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2605 \u2605 \u2605"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb30fcca7940a2e49abef029ab21e200, type: 2}
+  m_sharedMaterial: {fileID: 5901307710864074851, guid: bb30fcca7940a2e49abef029ab21e200, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3673,6 +3705,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489918858}
   m_CullTransparentMesh: 1
+--- !u!114 &489918862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489918858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e666590223063fb44862cb2050fd85b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarScoreDisplay
+  starTextComponent: {fileID: 489918860}
 --- !u!1 &513331101
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4258,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &582654292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6167646951596113613, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
@@ -5315,6 +5362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: SSD 2
   assemblyComponent: {fileID: 577296663}
+  level3VisualController: {fileID: 0}
 --- !u!65 &817633468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5549,6 +5597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: GPU
   assemblyComponent: {fileID: 1990095555}
+  level3VisualController: {fileID: 0}
 --- !u!65 &834529186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6015,6 +6064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: Motherboard
   assemblyComponent: {fileID: 297103078}
+  level3VisualController: {fileID: 0}
 --- !u!65 &875758571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6155,7 +6205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LEVEL 3: TIME TRIAL CHALLENGE!'
+  m_text: 'LEVEL 3: TIME VIRTUAL CHALLENGE!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7261,6 +7311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: 'CPU Cooler '
   assemblyComponent: {fileID: 1104229885}
+  level3VisualController: {fileID: 0}
 --- !u!65 &1097422823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7334,6 +7385,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1107209953
 GameObject:
   m_ObjectHideFlags: 0
@@ -8153,6 +8206,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1297662160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8818,6 +8873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: CPU
   assemblyComponent: {fileID: 1663092830}
+  level3VisualController: {fileID: 0}
 --- !u!65 &1341694604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8868,8 +8924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c3678e91c06ca419c3e61939328bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisassemblyManager
-  instructionText: {fileID: 0}
-  progressText: {fileID: 0}
+  instructionText: {fileID: 207845430}
+  progressText: {fileID: 1464903770}
   instructionsPanel: {fileID: 77571016}
   wrongClickFeedback: {fileID: 464203898}
   wrongClickFeedbackText: {fileID: 840680400}
@@ -8980,7 +9036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c6b0a9d7113bb448aab0377bd752f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisassemblyComponent
-  componentName: PSU
+  componentName: Power Supply
   manager: {fileID: 0}
   moveDistance: 1.5
   moveDuration: 0.5
@@ -9226,7 +9282,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464903768}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -9239,7 +9295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Step 1 / 7
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -9378,6 +9434,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1528200959
 GameObject:
   m_ObjectHideFlags: 0
@@ -9760,6 +9818,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 258796312}
+  useLevel3SavedTransform: 1
 --- !u!1 &1595135255
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10217,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1673594551
 GameObject:
   m_ObjectHideFlags: 0
@@ -11381,6 +11443,10 @@ MonoBehaviour:
   timeTrialTimer: {fileID: 1565947134}
   instructionsPanel: {fileID: 77571016}
   startButton: {fileID: 1700846907}
+  disassemblyInstruction: {fileID: 0}
+  progressText: {fileID: 0}
+  assemblyTargetColliderController: {fileID: 1906573817}
+  assemblyVisualController: {fileID: 258796312}
   resultsPanel: {fileID: 182358522}
   resultsTitle: {fileID: 1174665694}
   starText: {fileID: 489918860}
@@ -11393,8 +11459,6 @@ MonoBehaviour:
   finalAccuracyText: {fileID: 1302201050}
   retryButton: {fileID: 70453151}
   mainMenuButton: {fileID: 991491759}
-  assemblyTargetColliderController: {fileID: 1906573817}
-  assemblyVisualController: {fileID: 258796312}
 --- !u!4 &1850753958
 Transform:
   m_ObjectHideFlags: 0
@@ -12147,6 +12211,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1994922293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12879,6 +12945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: CPU Cooler Fan
   assemblyComponent: {fileID: 1492896258}
+  level3VisualController: {fileID: 0}
 --- !u!65 &2137308291
 BoxCollider:
   m_ObjectHideFlags: 0
