@@ -707,7 +707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &77571017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1006,6 +1006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: Power Supply
   assemblyComponent: {fileID: 1593315809}
+  level3VisualController: {fileID: 0}
 --- !u!65 &110600882
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2381,6 +2382,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,6 +3188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: SSD 1
   assemblyComponent: {fileID: 1293178594}
+  level3VisualController: {fileID: 0}
 --- !u!65 &429239431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3294,6 +3298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: RAM
   assemblyComponent: {fileID: 324876163}
+  level3VisualController: {fileID: 0}
 --- !u!65 &482152294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3992,6 +3997,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &582654292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6167646951596113613, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
@@ -4376,7 +4383,7 @@ GameObject:
   - component: {fileID: 657247944}
   - component: {fileID: 657247943}
   m_Layer: 5
-  m_Name: MainMenuButton
+  m_Name: NextLevelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4447,7 +4454,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 625146221}
         m_TargetAssemblyTypeName: AssemblyManager, Assembly-CSharp
-        m_MethodName: BackToMainMenu
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4477,7 +4484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MAIN MENU
+  m_text: NEXT LEVEL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5278,6 +5285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: SSD 2
   assemblyComponent: {fileID: 577296663}
+  level3VisualController: {fileID: 0}
 --- !u!65 &817633468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5512,6 +5520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: GPU
   assemblyComponent: {fileID: 1990095555}
+  level3VisualController: {fileID: 0}
 --- !u!65 &834529186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5989,6 +5998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: Motherboard
   assemblyComponent: {fileID: 297103078}
+  level3VisualController: {fileID: 0}
 --- !u!65 &875758571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7074,6 +7084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: 'CPU Cooler '
   assemblyComponent: {fileID: 1104229885}
+  level3VisualController: {fileID: 0}
 --- !u!65 &1097422823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7158,6 +7169,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1107209953
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,6 +7990,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1297662160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8642,6 +8657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: CPU
   assemblyComponent: {fileID: 1663092830}
+  level3VisualController: {fileID: 0}
 --- !u!65 &1341694604
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9203,6 +9219,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1528200959
 GameObject:
   m_ObjectHideFlags: 0
@@ -9585,6 +9603,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1595135255
 GameObject:
   m_ObjectHideFlags: 0
@@ -9980,6 +10000,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1673594551
 GameObject:
   m_ObjectHideFlags: 0
@@ -11852,6 +11874,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1994922293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12584,6 +12608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: CPU Cooler Fan
   assemblyComponent: {fileID: 1492896258}
+  level3VisualController: {fileID: 0}
 --- !u!65 &2137308291
 BoxCollider:
   m_ObjectHideFlags: 0

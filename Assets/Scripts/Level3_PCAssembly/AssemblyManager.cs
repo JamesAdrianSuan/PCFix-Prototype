@@ -595,6 +595,15 @@ public class AssemblyManager : MonoBehaviour
             "Main Menu"
         );
     }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(
+            "Level3TimeChallenge"
+        );
+    }
     public int GetCorrectCount()
     {
         return correctCount;
