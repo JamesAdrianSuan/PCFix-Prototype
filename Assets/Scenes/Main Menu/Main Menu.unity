@@ -2551,7 +2551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -815, y: 402}
+  m_AnchoredPosition: {x: -756, y: 402}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164230640
@@ -4989,7 +4989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -641, y: 111}
+  m_AnchoredPosition: {x: -606, y: 111}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &304789763
@@ -6102,7 +6102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773, y: 421}
+  m_AnchoredPosition: {x: 703, y: 421}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387192172
@@ -7741,7 +7741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &510573659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9347,7 +9347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -634, y: -115}
+  m_AnchoredPosition: {x: -609, y: -115}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638438220
@@ -10447,14 +10447,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PCFIX is an interactive, gamified web-based application to transform technical
-    training in computer hardware assembly and disassembly. By bridging traditional
-    hardware servicing instruction with an engaging digital format, the platform
-    offers students a risk-free, hands-on environment to practice component recognition,
-    correct installation sequences, and troubleshooting procedures. Designed to improve
-    technical skill retention and practical proficiency, PCFIX provides an accessible,
-    step-by-step learning experience that prepares learners for real-world computer
-    systems servicing
+  m_text: PCFIX is an interactive, gamified web-based pre-laboratory application
+    to transform technical training in computer hardware assembly and disassembly.
+    By bridging traditional hardware servicing instruction with an engaging digital
+    format, the platform offers students a risk-free, hands-on environment to practice
+    component recognition, correct installation sequences, and troubleshooting procedures.
+    Designed to improve technical skill retention and practical proficiency, PCFIX
+    provides an accessible, step-by-step learning experience that prepares learners
+    for real-world computer systems servicing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
   m_sharedMaterial: {fileID: 3459204711782724021, guid: 7a8417106ff1b434290dc2b62f92d69a, type: 2}
@@ -11143,7 +11143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -634, y: -231}
+  m_AnchoredPosition: {x: -609, y: -231}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &788112770
@@ -12468,8 +12468,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'TEAM:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14436,7 +14436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -637, y: -2}
+  m_AnchoredPosition: {x: -607, y: -2}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131117365
@@ -24906,8 +24906,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -722, y: -144}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -638, y: -143}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814666507
 MonoBehaviour:
@@ -24932,8 +24932,8 @@ MonoBehaviour:
   m_text: "Leader: Suan, James Adrian\r\n\r\nBuenafe, Josephine\r\nDabu, Carl Stephen
     \r\nDe Guzman, Shamel Avril \r\nValerio, Ezekiel"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25366,7 +25366,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899125233}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 21.2, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25580,8 +25580,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to PCFIX: A Gamified Web Based Application For Computer System
-    Assembly and Disassembly '
+  m_text: 'Welcome to PCFIX: A Gamified Web-Based Pre-Laboratory Application for
+    Practicing Computer System Assembly and Disassembly Procedures Among Third Year
+    BTLEd-ICT Students '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -26959,7 +26960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -633, y: -346}
+  m_AnchoredPosition: {x: -608, y: -346}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2074511893

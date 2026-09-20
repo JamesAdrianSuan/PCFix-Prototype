@@ -367,7 +367,7 @@ public class Level3PerformanceManager : MonoBehaviour
                 "PERFORMANCE CHALLENGE COMPLETE!";
 
         if (starText != null)
-            starText.text = stars;
+            starText.text = "Stars: " + GetStarCount(accuracy) + "/3";
 
         if (performanceText != null)
             performanceText.text =
@@ -375,31 +375,32 @@ public class Level3PerformanceManager : MonoBehaviour
 
         if (finalScoreText != null)
             finalScoreText.text =
-                finalScore.ToString();
+                "Final Score: " + finalScore;
 
         if (finalTimeText != null &&
             timeTrialTimer != null)
         {
             finalTimeText.text =
+                "Final Time: " +
                 timeTrialTimer.GetFormattedTime();
         }
 
         if (finalXPText != null)
             finalXPText.text =
-                finalXP.ToString();
+                "XP: " + finalXP;
 
         if (finalCorrectText != null)
             finalCorrectText.text =
-                totalCorrect.ToString();
+                "Correct: " + totalCorrect;
 
         if (finalMistakesText != null)
             finalMistakesText.text =
-                totalMistakes.ToString();
+                "Wrong Clicks: " + totalMistakes;
 
         if (finalAccuracyText != null)
             finalAccuracyText.text =
+                "Accuracy: " +
                 accuracy.ToString("F1") + "%";
-
         Debug.Log(
             "=== LEVEL 3 PERFORMANCE COMPLETE ==="
         );
@@ -436,6 +437,18 @@ public class Level3PerformanceManager : MonoBehaviour
             "Final XP: " +
             finalXP
         );
+    }
+
+    private int GetStarCount(float accuracy)
+    {
+        if (accuracy >= 90f)
+            return 3;
+        else if (accuracy >= 75f)
+            return 2;
+        else if (accuracy >= 60f)
+            return 1;
+        else
+            return 0;
     }
 
 

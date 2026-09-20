@@ -505,7 +505,7 @@ public class AssemblyManager : MonoBehaviour
 
         if (finalScoreText != null)
             finalScoreText.text =
-                "Score: " + score;
+                "Final Score: " + score;
 
         if (finalMistakesText != null)
             finalMistakesText.text =
