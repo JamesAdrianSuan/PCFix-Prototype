@@ -427,6 +427,8 @@ MonoBehaviour:
   zoomSpeed: 0.15
   zoomSmoothness: 12
   rotationSpeed: 0.15
+  panSpeed: 0.01
+  panSmoothness: 12
   targetHeight: 1
 --- !u!1 &37620182
 GameObject:
@@ -5013,8 +5015,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819900867032199405}
   m_SourcePrefab: {fileID: 100100000, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+--- !u!1 &1819900867032199404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+  m_PrefabInstance: {fileID: 1819900867032199403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819900867032199405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819900867032199404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623aff23f7263384db2f4c46524267f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomBuilder
+  roomWidth: 35
+  roomLength: 35
+  wallHeight: 6
+  wallThickness: 0.2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

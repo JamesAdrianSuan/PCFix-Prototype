@@ -583,6 +583,8 @@ MonoBehaviour:
   zoomSpeed: 0.15
   zoomSmoothness: 12
   rotationSpeed: 0.15
+  panSpeed: 0.01
+  panSmoothness: 12
   targetHeight: 1
 --- !u!1 &410087039
 GameObject:
@@ -1097,6 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DisassemblyManager
   instructionText: {fileID: 207845430}
   progressText: {fileID: 1464903770}
+  instructionsPanel: {fileID: 0}
   wrongClickFeedback: {fileID: 0}
   wrongClickFeedbackText: {fileID: 0}
   feedbackDuration: 2
@@ -1110,6 +1113,7 @@ MonoBehaviour:
   finalMistakesText: {fileID: 0}
   finalAccuracyText: {fileID: 0}
   retryButton: {fileID: 0}
+  timeTrialMode: 0
   inventory: {fileID: 0}
   components:
   - componentName: Power Supply
@@ -1453,6 +1457,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!4 &1903069866
 Transform:
   m_ObjectHideFlags: 0
@@ -1578,6 +1584,20 @@ MonoBehaviour:
     component: {fileID: 0}
   - componentName: 
     component: {fileID: 0}
+  wrongClickFeedback: {fileID: 0}
+  wrongClickFeedbackText: {fileID: 0}
+  feedbackDuration: 1.5
+  resultsPanel: {fileID: 0}
+  resultsTitle: {fileID: 0}
+  starText: {fileID: 0}
+  performanceText: {fileID: 0}
+  finalScoreText: {fileID: 0}
+  finalMistakesText: {fileID: 0}
+  finalAccuracyText: {fileID: 0}
+  retryButton: {fileID: 0}
+  finalCorrectText: {fileID: 0}
+  finalXPText: {fileID: 0}
+  timeTrialMode: 0
 --- !u!4 &2127626143
 Transform:
   m_ObjectHideFlags: 0
