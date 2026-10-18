@@ -3819,6 +3819,100 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 600, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1620784267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620784270}
+  - component: {fileID: 1620784269}
+  - component: {fileID: 1620784268}
+  m_Layer: 0
+  m_Name: Terrain_(125.75, 0.00, 232.99) (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!154 &1620784268
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620784267}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: 5843fea998de18044b1ffb6b61df921d, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &1620784269
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620784267}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: 5843fea998de18044b1ffb6b61df921d, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMinimumLODSimplification: 0
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 0
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 0.0256
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_EnableHeightmapLODFrustumCulling: 1
+  m_TreeMotionVectorModeOverride: 3
+--- !u!4 &1620784270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620784267}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -961, y: -0, z: -990}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1737456283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2661478391666310085, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
@@ -5019,6 +5113,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1819900867032199405}
+    - targetCorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819900867032199409}
+    - targetCorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819900867032199408}
+    - targetCorrespondingSourceObject: {fileID: 3388051085962821717, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819900867032199407}
   m_SourcePrefab: {fileID: 100100000, guid: c14b4c980856e884fab62c9688ed7435, type: 3}
 --- !u!1 &1819900867032199404 stripped
 GameObject:
@@ -5037,10 +5140,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623aff23f7263384db2f4c46524267f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBuilder
-  roomWidth: 35
-  roomLength: 35
-  wallHeight: 6
+  roomWidth: 20
+  roomLength: 20
+  wallHeight: 10
   wallThickness: 0.2
+  windowWidth: 8
+  windowHeight: 8
+  windowBottomHeight: 0.8
+  tablePosition: {x: 1, y: 1, z: 3}
+  pcHeightOffset: 0
+  ceilingLightColor: {r: 0.95, g: 0.98, b: 1, a: 1}
+  ceilingLightIntensity: 20
+  ceilingLightRange: 30
+--- !u!114 &1819900867032199407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819900867032199404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3dad0194d8fdb048aff4832ad382e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grass
+  totalSize: 500
+  grassColor: {r: 0.18, g: 0.55, b: 0.22, a: 1}
+  sunColor: {r: 1, g: 0.96, b: 0.85, a: 1}
+  sunIntensity: 1.6
+--- !u!114 &1819900867032199408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819900867032199404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9025f1d98e0416c498eba0c704cba03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Graphics
+  sunLightColor: {r: 1, g: 0.7, b: 0.35, a: 1}
+  sunIntensity: 3.5
+  sunRotation: {x: 25, y: -140, z: 0}
+  shadowStrength: 0.85
+  shadowDistance: 40
+  ambientIntensity: 0.7
+  skyboxTint: {r: 1, g: 0.9215687, b: 0.8039216, a: 1}
+  casualDayCubemap: {fileID: 8900000, guid: 12c15a8e5a294be45819b1dd4b9b08d3, type: 3}
+  bloomIntensity: 0.6
+  saturation: 20
+  contrast: 15
+  vignetteIntensity: 0.25
+--- !u!114 &1819900867032199409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819900867032199404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cf42c8f055c3848bf2b9b49fd04b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tables
+  rows: 2
+  columns: 3
+  spacingX: 5
+  spacingZ: 4
+  startPosition: {x: -4, y: 0, z: -4}
+  deskWidth: 3
+  deskDepth: 1.5
+  deskHeight: 1
+  deskThickness: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5053,3 +5225,4 @@ SceneRoots:
   - {fileID: 331434868}
   - {fileID: 1303488817}
   - {fileID: 1819900867032199403}
+  - {fileID: 1620784270}
