@@ -26,6 +26,9 @@ MonoBehaviour:
     m_path: Assets/Scenes/Main Menu/Main Menu.unity
     m_guid: 3789fd32d4d52d14caf00a754d8c44db
   - m_enabled: 1
+    m_path: Assets/Scenes/Level1HardwareIdentification/Level1HardwareIdentification.unity
+    m_guid: 4b459db52fe477f46aac7b12e4063cd4
+  - m_enabled: 1
     m_path: Assets/Scenes/Level2_PCDisassembly/Level1PCDisassembly.unity
     m_guid: beee59a3112d4214eb07407d68f94b75
   - m_enabled: 1
@@ -81,8 +84,8 @@ MonoBehaviour:
     - line: '|   m_VirtualRealitySplashScreen: {instanceID: 0}'
     - line: '|   defaultScreenWidth: 1024'
     - line: '|   defaultScreenHeight: 768'
-    - line: '|   defaultScreenWidthWeb: 960'
-    - line: '|   defaultScreenHeightWeb: 600'
+    - line: '|   defaultScreenWidthWeb: 1920'
+    - line: '|   defaultScreenHeightWeb: 1080'
     - line: '|   m_StereoRenderingPath: 0'
     - line: '|   m_ActiveColorSpace: 1'
     - line: '|   unsupportedMSAAFallback: 0'

@@ -1079,6 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: Power Supply
   assemblyComponent: {fileID: 1593315809}
+  level3VisualController: {fileID: 0}
 --- !u!1 &144232088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1960,7 +1961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LEVEL 1: COMPUTER DISASSEMBLY'
+  m_text: 'LEVEL 2: COMPUTER DISASSEMBLY'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10340,6 +10341,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!1 &1613965806
 GameObject:
   m_ObjectHideFlags: 0
@@ -11481,6 +11484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AssemblyDropTarget
   componentName: GPU
   assemblyComponent: {fileID: 3437398691449592569}
+  level3VisualController: {fileID: 0}
 --- !u!1 &1807129668
 GameObject:
   m_ObjectHideFlags: 0
@@ -13258,6 +13262,8 @@ MonoBehaviour:
   startUpOffset: 0.15
   snapRotation: 1
   snapPosition: 1
+  level3VisualController: {fileID: 0}
+  useLevel3SavedTransform: 0
 --- !u!64 &3437398691449592570
 MeshCollider:
   m_ObjectHideFlags: 0
